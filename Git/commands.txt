@@ -1,0 +1,10 @@
+git clone --link
+git pull origin main --> pull files of the main branch
+git add .
+git branch --> know which branch 
+git checkout branchname --> switch to branch
+git commit -m "monaim" --> commit
+git push -u origin branch name --> push to your branch
+
+
+in interface compare and pull request to merge it in main
