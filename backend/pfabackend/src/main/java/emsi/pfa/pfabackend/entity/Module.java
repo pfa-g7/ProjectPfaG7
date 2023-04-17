@@ -18,4 +18,6 @@ public class Module {
 
     @ManyToOne
     private Filiere filiere;
+    @ManyToOne
+    private Semestre semestre;
 }

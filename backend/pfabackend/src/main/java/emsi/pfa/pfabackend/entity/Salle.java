@@ -16,7 +16,7 @@ public class Salle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private int numero;
     private int capacite;
 }
