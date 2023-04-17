@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Teacher")
+@RequestMapping("/api/teacher")
 public class TeacherController {
 
         @Autowired
@@ -18,8 +18,9 @@ public class TeacherController {
         public List<Teacher> findAll(){
             return teacherService.findAll();
         }
+
         @PostMapping("/save")
-        public void save(@PathVariable Teacher teacher){
+        public void save(@RequestBody Teacher teacher){
             teacherService.save(teacher);
         }
 

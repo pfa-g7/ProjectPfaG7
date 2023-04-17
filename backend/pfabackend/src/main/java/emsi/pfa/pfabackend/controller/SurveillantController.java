@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/Surveillant")
+@RequestMapping("/api/surveillant")
 public class SurveillantController {
 
 
@@ -22,7 +22,7 @@ public class SurveillantController {
             return surveillantService.findAll();
         }
         @PostMapping("/save")
-        public void save(@PathVariable Surveillant surveillant){
+        public void save(@RequestBody Surveillant surveillant){
             surveillantService.save(surveillant);
         }
 
