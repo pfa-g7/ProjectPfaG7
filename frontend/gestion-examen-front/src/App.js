@@ -1,13 +1,10 @@
-import Sidebar from "./Components/Sidebar";
-//import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Router, useRoutes } from "react-router-dom";
+import Themeroutes from "./routes/Router";
 
-function App() {
-  return (
-    <div className="container-fluid">
-      <Sidebar />
-    </div>
-  );
-}
+const App = () => {
+  const routing = useRoutes(Themeroutes);
+
+  return <div className="dark">{routing}</div>;
+};
 
 export default App;
