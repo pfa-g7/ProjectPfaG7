@@ -29,14 +29,21 @@ public class UserImplService implements UserService {
     }
 
     @Override
+    public User findById(long id) {
+        return userRepository.findById(id);
+    }
+
+    @Override
     public String generatePassword() {
         return null;
     }
 
     @Override
     public void deleteUserById(Long id) {
-
+        userRepository.deleteById(id);
     }
+
+
 
     @Override
     public User updateUser(User user) {
