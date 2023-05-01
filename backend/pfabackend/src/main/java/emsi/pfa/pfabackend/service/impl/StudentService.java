@@ -22,12 +22,12 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
-    public Optional<Student> findById(Long aLong) {
-        return studentRepository.findById(aLong);
+    public Optional<Student> findById(Integer id) {
+        return studentRepository.findById(id);
     }
 
     @Transactional
-    public void deleteById(Long aLong) {
-        studentRepository.deleteById(aLong);
+    public void deleteById(Integer id) {
+        studentRepository.deleteById(id);
     }
 }
