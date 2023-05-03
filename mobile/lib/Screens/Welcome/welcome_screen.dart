@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -12,15 +11,16 @@ class WelcomeScreen extends StatefulWidget {
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
- final _emailController = TextEditingController();
- final _passwordController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
- Future signIn() async{
-   await FirebaseAuth.instance.signInWithEmailAndPassword(
-       email: _emailController.text.trim() ,
-       password: _passwordController.text.trim(),
-   );
-}
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+  }
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -34,10 +34,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         backgroundColor: Colors.grey[300],
         body: SafeArea(
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 25),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+              SizedBox(height: 25),
               // hello DDgain!
               Text(
                 'Hello Again!',
@@ -57,10 +56,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 height: 20,
               ),
               // email textfield
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: GestureDetector(
-                onTap: signIn,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Container(
                     decoration: BoxDecoration(
                       color: Colors.grey[200],
@@ -70,16 +67,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
                       child: TextField(
-                        controller: _emailController ,
+                        controller: _emailController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Email',
                         ),
                       ),
-                    )
-                ),
+                    )),
               ),
-            ),
               // password textfield
               SizedBox(
                 height: 10,
@@ -94,15 +89,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 20.0),
-                      child: TextField(obscureText: true,
+                      child: TextField(
+                        obscureText: true,
                         controller: _passwordController,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           hintText: 'Password',
                         ),
                       ),
-                    )
-                ),
+                    )),
               ),
               // sign in button
               SizedBox(
@@ -110,21 +105,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Container(
-                  padding: EdgeInsets.all(25),
-                  decoration: BoxDecoration(
-                      color:Colors.deepOrange,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-
-                  child: Center(
-                      child: Text('Sign In',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
+                child: GestureDetector(
+                  onTap: signIn,
+                  child: Container(
+                    padding: EdgeInsets.all(25),
+                    decoration: BoxDecoration(
+                      color: Colors.deepOrange,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Text(
+                        'Sign In',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
                       ),
-                      ),
+                    ),
                   ),
                 ),
               ),
@@ -138,17 +136,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text('Resigter Now',
+                  Text(
+                    'Resigter Now',
                     style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
               )
             ]),
           ),
-        )
-    );
+        ));
   }
 }
