@@ -21,11 +21,11 @@ public class TeacherService {
         return teacherRepository.save(entity);
     }
 
-    public Optional<Teacher> findById(Long aLong) {
-        return teacherRepository.findById(aLong);
+    public Optional<Teacher> findById(Integer id) {
+        return teacherRepository.findById(id);
     }
 
-    public void deleteById(Long aLong) {
-        teacherRepository.deleteById(aLong);
+    public void deleteById(Integer id) {
+        teacherRepository.deleteById(id);
     }
 }

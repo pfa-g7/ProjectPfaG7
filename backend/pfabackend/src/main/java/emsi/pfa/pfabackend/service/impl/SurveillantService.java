@@ -21,11 +21,11 @@ public class SurveillantService {
         return surveillantRepository.save(entity);
     }
 
-    public Optional<Surveillant> findById(Long aLong) {
-        return surveillantRepository.findById(aLong);
+    public Optional<Surveillant> findById(Integer id) {
+        return surveillantRepository.findById(id);
     }
 
-    public void deleteById(Long aLong) {
-        surveillantRepository.deleteById(aLong);
+    public void deleteById(Integer id) {
+        surveillantRepository.deleteById(id);
     }
 }
