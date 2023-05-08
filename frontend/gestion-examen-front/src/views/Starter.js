@@ -1,4 +1,4 @@
-import { Col, Row } from "reactstrap";
+import {Col, Row} from "reactstrap";
 import SalesChart from "../Components/dashboard/SalesChart";
 import Feeds from "../Components/dashboard/Feeds";
 import ProjectTables from "../Components/dashboard/ProjectTable";

@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardTitle,
-  Row,
-  Col,
-} from "reactstrap";
+import React, {useState} from "react";
+import {Button, ButtonGroup, Card, CardBody, CardTitle, Col, Row,} from "reactstrap";
 
 const Buttons = () => {
   const [cSelected, setCSelected] = useState([]);

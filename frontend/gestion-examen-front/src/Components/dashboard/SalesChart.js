@@ -1,4 +1,4 @@
-import { Card, CardBody, CardSubtitle, CardTitle } from "reactstrap";
+import {Card, CardBody, CardSubtitle, CardTitle} from "reactstrap";
 import Chart from "react-apexcharts";
 
 const SalesChart = () => {

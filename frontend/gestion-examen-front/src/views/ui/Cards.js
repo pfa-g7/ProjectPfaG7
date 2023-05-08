@@ -1,15 +1,4 @@
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardGroup,
-  Button,
-  Row,
-  Col,
-} from "reactstrap";
+import {Button, Card, CardBody, CardGroup, CardImg, CardSubtitle, CardText, CardTitle, Col, Row,} from "reactstrap";
 import Blog from "../../Components/dashboard/Blog";
 import bg1 from "../../assets/images/bg/bg1.jpg";
 import bg2 from "../../assets/images/bg/bg2.jpg";
