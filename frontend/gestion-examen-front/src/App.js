@@ -4,17 +4,11 @@ import AuthGuard from "./utils/guards/AuthGuard";
 import SignIn from "./views/SignIn";
 
 const App = () => {
-    const routing = useRoutes([
-        {
-            path: '',
-            element: <AuthGuard/>,
-            children: Themeroutes,
-        },
-        {
-            path: '/login',
-            element: <SignIn/>,
-        },
-    ]);
+    const routing = useRoutes([{
+        path: '/*', element: <AuthGuard/>, children: Themeroutes
+    }, {
+        path: '/login', element: <SignIn/>,
+    },]);
     return (<div className="dark">{routing}</div>)
 };
 

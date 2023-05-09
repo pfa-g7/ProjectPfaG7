@@ -1,5 +1,4 @@
 import {lazy} from "react";
-import {Navigate} from "react-router-dom";
 
 
 /****Layouts*****/
@@ -22,20 +21,20 @@ const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 
 const ThemeRoutes = [
     {
-        path: '/',
+        path: "",
         element: <FullLayout/>,
         children: [
-            {path: 'starter', element: <Starter/>},
-            {path: 'about', element: <About/>},
-            {path: 'alerts', element: <Alerts/>},
-            {path: 'badges', element: <Badges/>},
-            {path: 'buttons', element: <Buttons/>},
-            {path: 'cards', element: <Cards/>},
-            {path: 'grid', element: <Grid/>},
-            {path: 'table', element: <Tables/>},
-            {path: 'forms', element: <Forms/>},
-            {path: 'breadcrumbs', element: <Breadcrumbs/>},
-            {path: '/', element: <Navigate to='/starter'/>},
+            {path: "starter", element: <Starter/>},
+            {path: "about", element: <About/>},
+            {path: "alerts", element: <Alerts/>},
+            {path: "badges", element: <Badges/>},
+            {path: "buttons", element: <Buttons/>},
+            {path: "cards", element: <Cards/>},
+            {path: "grid", element: <Grid/>},
+            {path: "table", element: <Tables/>},
+            {path: "forms", element: <Forms/>},
+            {path: "breadcrumbs", element: <Breadcrumbs/>},
+            // { path: "*", element: <Navigate to="/starter" /> },
         ],
     },
 ];

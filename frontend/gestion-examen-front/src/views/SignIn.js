@@ -1,10 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Col, Container, Input, Row} from 'reactstrap';
 import {Facebook, Google, Linkedin, Twitter} from 'react-bootstrap-icons';
 import '../Css/signin.css';
+import {login} from "../utils/auth";
+import {useNavigate} from "react-router-dom";
 
 
 function SignIn() {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            alert(email)
+            alert(password)
+            await login(email, password);
+            navigate('/starter');
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     return (
         <Container fluid className="p-3 my-5 h-custom">
@@ -40,8 +57,18 @@ function SignIn() {
                         <p className="text-center fw-bold mx-3 mb-0">Or</p>
                     </div>
 
-                    <Input wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"/>
-                    <Input wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg"/>
+                    <Input wrapperClass='mb-4'
+                           onChange={e => setEmail(e.target.value)}
+                           label='Email address'
+                           placeholder="Email address"
+                           value={email}
+                           id='formControlLg' type='email' size="lg"/>
+
+
+                    <Input wrapperClass='mb-4' label='Password' value={password}
+                           placeholder="Password"
+                           onChange={e => setPassword(e.target.value)}
+                           id='formControlLg' type='password' size="lg"/>
 
                     <div className="d-flex justify-content-between mb-4">
                         <Input type='checkbox' name='flexCheck' value='' id='flexCheckDefault' label='Remember me'/>
@@ -50,10 +77,11 @@ function SignIn() {
                     </div>
 
                     <div className='text-center text-md-start mt-4 pt-2'>
-                        <Button className="mb-0 px-5" size='lg'>Login</Button>
-                        <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="#!"
-                                                                                              className="link-danger">Register</a>
-                        </p>
+                        <Button onClick={handleSubmit} className="mb-0 px-5" size='lg'>Login</Button>
+
+                        {/*<p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="#!"*/}
+                        {/*                                                                      className="link-danger">Register</a>*/}
+                        {/*</p>*/}
                     </div>
 
                 </Col>

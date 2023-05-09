@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import {redirect, useNavigate} from "react-router-dom";
 
 const API_URL = 'http://localhost:8080/api/auth';
 
@@ -29,8 +30,10 @@ const isTokenExpired = token => {
 }
 
 const login = async (email, password) => {
-    const response = await axios.post(`${API_URL}/login`, {email, password});
-    const {token} = response.data;
+    const response = await axios.post(`${API_URL}/authenticate`, {email, password});
+    const token = response.data.access_token;
+    console.log(token)
+    console.log(response)
     localStorage.setItem('token', token);
     setAuthToken(token);
 }
