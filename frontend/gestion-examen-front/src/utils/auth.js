@@ -1,6 +1,5 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import {redirect, useNavigate} from "react-router-dom";
 
 const API_URL = 'http://localhost:8080/api/auth';
 
