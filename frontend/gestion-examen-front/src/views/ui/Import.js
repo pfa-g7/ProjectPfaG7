@@ -1,5 +1,10 @@
 import React, {useState} from 'react';
 import * as XLSX from 'xlsx';
+import FiliereService from "../../services/filiereService";
+import SemestreService from "../../services/semestreService";
+import StudentService from "../../services/studentService";
+import ModuleService from "../../services/moduleService";
+import ExamService from "../../services/examService";
 
 const ExcelUploadComponent = () => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -12,19 +17,13 @@ const ExcelUploadComponent = () => {
     const handleUpload = async () => {
         try {
             const fileReader = new FileReader();
-            fileReader.onload = (e) => {
+            fileReader.onload = async (e) => {
                 const arrayBuffer = e.target.result;
                 const workbook = XLSX.read(arrayBuffer, {type: 'array'});
                 const worksheet = workbook.Sheets[workbook.SheetNames[0]];
                 const data = XLSX.utils.sheet_to_json(worksheet, {header: 1});
-                const columns = data[1];
                 data.splice(0, 2)
 
-                console.log(data)
-                for (let column of columns) {
-                    console.log(column)
-
-                }
                 for (let row of data) {
                     console.log('===========================================================================')
 
@@ -37,7 +36,15 @@ const ExcelUploadComponent = () => {
                         cne: row[1],
                         lastName: row[2],
                         firstName: row[3],
-                        email: row[2].replace(/\s/g, '') + row[3].replace(/\s/g, '') + 'gmail.com' // generate email from firstname and lastname
+                        email: row[2].replace(/\s/g, '').toLowerCase() + row[3].replace(/\s/g, '').toLowerCase() + '@gmail.com' // generate email from firstname and lastname
+                    }
+                    try {
+                        const response = await StudentService.save(student);
+                        console.info('student saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
                     }
                     console.log(student)
 
@@ -45,67 +52,113 @@ const ExcelUploadComponent = () => {
                      * create Filiere
                      * @type {{libelle: string}}
                      */
-                    const filiere = {
-                        libelle: row[4]
+                    let filiere = {
+                        libelle: row[4].replace(/\s/g, '')
                     }
-                    console.log(filiere)
+                    try {
+                        const response = await FiliereService.save(filiere);
+                        console.info('filiere saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
                     /**
                      * create semestre
                      * @type {{libelle: string}}
                      */
-                    const semestre = {
-                        libelle: row[5]
+                    let semestre = {
+                        libelle: row[5].replace(/\s/g, '')
                     }
                     console.log(semestre)
+                    try {
+                        const response = await SemestreService.save(semestre);
+                        console.info('Data saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
                     /**
                      * create modules
                      */
 
                     const module1 = {
-                        libelle: row[6],
-                        semestre: semestre,
-                        filiere: filiere
+                        libelle: row[6].replace(/\s/g, ''), semestre: semestre, filiere: filiere
                     }
-                    console.log(module1)
+                    try {
+                        const response = await ModuleService.save(module1);
+                        console.info('module saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
+
 
                     const module2 = {
-                        libelle: row[12],
-                        semestre: semestre,
-                        filiere: filiere
+                        libelle: row[12].replace(/\s/g, ''), semestre: semestre, filiere: filiere
                     }
-                    console.log(module2)
+                    try {
+                        const response = await ModuleService.save(module2);
+                        console.info('module saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
 
                     const module3 = {
-                        libelle: row[18],
-                        semestre: semestre,
-                        filiere: filiere
+                        libelle: row[18].replace(/\s/g, ''), semestre: semestre, filiere: filiere
                     }
-                    console.log(module3)
+                    try {
+                        const response = await ModuleService.save(module3);
+                        console.info('module saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
                     const module4 = {
-                        libelle: row[24],
-                        semestre: semestre,
-                        filiere: filiere
+                        libelle: row[24].replace(/\s/g, ''), semestre: semestre, filiere: filiere
                     }
-                    console.log(module4)
+                    try {
+                        const response = await ModuleService.save(module4);
+                        console.info('module saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
 
                     const module5 = {
-                        libelle: row[30],
-                        semestre: semestre,
-                        filiere: filiere
+                        libelle: row[30].replace(/\s/g, ''), semestre: semestre, filiere: filiere
                     }
-                    console.log(module5)
+                    try {
+                        const response = await ModuleService.save(module5);
+                        console.info('module saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
                     const module6 = {
-                        libelle: row[36],
-                        semestre: semestre,
-                        filiere: filiere
+                        libelle: row[36].replace(/\s/g, ''), semestre: semestre, filiere: filiere
                     }
-                    console.log(module6)
+                    try {
+                        const response = await ModuleService.save(module6);
+                        console.info('module saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
                     /**
                      * create exam1
@@ -122,7 +175,14 @@ const ExcelUploadComponent = () => {
                         student: student,
                         module: module1,
                     }
-                    console.log(exam1)
+                    try {
+                        const response = await ExamService.save(exam1);
+                        console.info('exam saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
 
                     const exam2 = {
@@ -134,7 +194,14 @@ const ExcelUploadComponent = () => {
                         student: student,
                         module: module2,
                     }
-                    console.log(exam2)
+                    try {
+                        const response = await ExamService.save(exam2);
+                        console.info('exam saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
 
                     const exam3 = {
@@ -146,7 +213,14 @@ const ExcelUploadComponent = () => {
                         student: student,
                         module: module3,
                     }
-                    console.log(exam3)
+                    try {
+                        const response = await ExamService.save(exam3);
+                        console.info('exam saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
 
                     const exam4 = {
@@ -158,7 +232,14 @@ const ExcelUploadComponent = () => {
                         student: student,
                         module: module4,
                     }
-                    console.log(exam4)
+                    try {
+                        const response = await ExamService.save(exam4);
+                        console.info('exam saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
 
                     const exam5 = {
@@ -170,7 +251,14 @@ const ExcelUploadComponent = () => {
                         student: student,
                         module: module5,
                     }
-                    console.log(exam5)
+                    try {
+                        const response = await ExamService.save(exam5);
+                        console.info('exam saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
 
                     const exam6 = {
@@ -182,17 +270,17 @@ const ExcelUploadComponent = () => {
                         student: student,
                         module: module6,
                     }
-                    console.log(exam6)
+                    try {
+                        const response = await ExamService.save(exam6);
+                        console.info('exam saved successfully:', response);
+                        // Handle the response data or update the component state
+                    } catch (error) {
+                        // Handle the error
+                        console.error(error)
+                    }
 
                 }
-                // Send the data to the server
-                // axios.post('/api/upload', { data })
-                //     .then((response) => {
-                //         console.log(response.data);
-                //     })
-                //     .catch((error) => {
-                //         console.error(error);
-                //     });
+
             };
             fileReader.readAsArrayBuffer(selectedFile);
         } catch (error) {
@@ -200,12 +288,10 @@ const ExcelUploadComponent = () => {
         }
     };
 
-    return (
-        <div>
-            <input type="file" onChange={handleFileChange}/>
-            <button onClick={handleUpload}>Upload</button>
-        </div>
-    );
+    return (<div>
+        <input type="file" onChange={handleFileChange}/>
+        <button onClick={handleUpload}>Upload</button>
+    </div>);
 };
 
 export default ExcelUploadComponent;
