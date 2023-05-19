@@ -3,6 +3,7 @@ package emsi.pfa.pfabackend.service.impl;
 import emsi.pfa.pfabackend.entity.User;
 import emsi.pfa.pfabackend.repository.UserRepository;
 import emsi.pfa.pfabackend.service.fasade.UserService;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class UserImplService implements UserService {
 
     @Override
     public String generatePassword() {
-        return null;
+        return RandomStringUtils.randomAlphanumeric(10);
     }
 
     @Override
