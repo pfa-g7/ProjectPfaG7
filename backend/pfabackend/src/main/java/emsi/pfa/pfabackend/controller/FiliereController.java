@@ -21,6 +21,7 @@ public class FiliereController {
 
     @PostMapping("/save")
     public Filiere save(@RequestBody Filiere filiere) {
+        System.out.println("filiere.getLibelle() = " + filiere.getLibelle());
         return filiereService.save(filiere);
     }
 }

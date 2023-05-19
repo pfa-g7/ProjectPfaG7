@@ -18,14 +18,9 @@ public class SalleSurveillant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Temporal(TemporalType.TIMESTAMP)
     private Date dateExam;
-
-    @ManyToOne
-    @JoinColumn(name = "salle", insertable = false, updatable = false)
-    private Salle salle;
-
+    private String salle;
     @ManyToOne
     @JoinColumn(name = "surveillant", insertable = false, updatable = false)
     private Surveillant surveillant;

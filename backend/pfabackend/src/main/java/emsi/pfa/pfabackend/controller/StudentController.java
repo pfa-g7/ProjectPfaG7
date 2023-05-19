@@ -14,11 +14,12 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping("/")
-    public List<Student> findAll(){
+    public List<Student> findAll() {
         return studentService.findAll();
     }
+
     @PostMapping("/save")
-    public void save(@RequestBody Student student){
-         studentService.save(student);
+    public void save(@RequestBody Student student) {
+        studentService.save(student);
     }
 }

@@ -1,4 +1,4 @@
-import { Container, Col, Row, Card, CardBody, CardTitle } from "reactstrap";
+import {Card, CardBody, CardTitle, Col, Container, Row} from "reactstrap";
 
 const Grid = () => {
   return (

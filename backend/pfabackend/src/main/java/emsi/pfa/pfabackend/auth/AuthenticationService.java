@@ -93,7 +93,7 @@ public class AuthenticationService {
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         final String refreshToken;
         final String userEmail;
-        if (authHeader == null ||!authHeader.startsWith("TEST")) {
+        if (authHeader == null || !authHeader.startsWith("TEST")) {
             return;
         }
         refreshToken = authHeader.substring(7);

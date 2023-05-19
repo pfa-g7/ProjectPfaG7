@@ -1,4 +1,4 @@
-import { Col, Row } from "reactstrap";
+import {Col, Row} from "reactstrap";
 import SalesChart from "../Components/dashboard/SalesChart";
 import Feeds from "../Components/dashboard/Feeds";
 import ProjectTables from "../Components/dashboard/ProjectTable";
@@ -8,6 +8,7 @@ import bg1 from "../assets/images/bg/bg1.jpg";
 import bg2 from "../assets/images/bg/bg2.jpg";
 import bg3 from "../assets/images/bg/bg3.jpg";
 import bg4 from "../assets/images/bg/bg4.jpg";
+import Import from "./ui/Import";
 
 const BlogData = [
   {
@@ -51,6 +52,10 @@ const Starter = () => {
 
       {/***Sales & Feed***/}
       <Row>
+        <Col sm="6" lg="6" xl="7" xxl="8">
+          <Import />
+        </Col>
+
         <Col sm="6" lg="6" xl="7" xxl="8">
           <SalesChart />
         </Col>

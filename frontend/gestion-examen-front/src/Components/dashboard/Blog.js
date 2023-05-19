@@ -1,12 +1,4 @@
-import {
-  Card,
-  CardBody,
-  CardImg,
-  CardSubtitle,
-  CardText,
-  CardTitle,
-  Button,
-} from "reactstrap";
+import {Button, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle,} from "reactstrap";
 
 const Blog = (props) => {
   return (

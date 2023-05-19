@@ -12,20 +12,23 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api/user")
 public class UserController {
     @Autowired
     private UserImplService userService;
+
     @PostMapping("/signIn")
     public ResponseEntity<User> signIn(User user) {
-       return userService.signIn(user);
+        return userService.signIn(user);
     }
+
     @PostMapping("/save")
-    public void save(@RequestBody User user){
+    public void save(@RequestBody User user) {
         userService.save(user);
     }
-    @GetMapping("/users")
-    public List<User> findAll(){
+
+    @GetMapping("/")
+    public List<User> findAll() {
         return userService.findAll();
     }
 }

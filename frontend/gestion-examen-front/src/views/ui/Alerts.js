@@ -1,12 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  Alert,
-  UncontrolledAlert,
-  Card,
-  CardBody,
-  CardTitle,
-} from "reactstrap";
-import axios from 'axios';
+import React, {useState} from "react";
+import {Alert, Card, CardBody, CardTitle, UncontrolledAlert,} from "reactstrap";
 
 const Alerts = () => {
 

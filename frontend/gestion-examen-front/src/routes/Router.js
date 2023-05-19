@@ -1,5 +1,4 @@
-import { lazy } from "react";
-import { Navigate } from "react-router-dom";
+import {lazy} from "react";
 
 
 /****Layouts*****/
@@ -17,37 +16,27 @@ const Grid = lazy(() => import("../views/ui/Grid"));
 const Tables = lazy(() => import("../views/ui/Tables"));
 const Forms = lazy(() => import("../views/ui/Forms"));
 const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
-const SignIn = lazy(() => import("../views/SignIn"));
-const StudentQR = lazy(() => import("../views/StudentQR"));
 
 /*****Routes******/
 
 const ThemeRoutes = [
-  {
-    path: "/",
-    element: <FullLayout />,
-    children: [
-      { path: "/", element: <Navigate to="/starter" /> },
-      { path: "/starter", exact: true, element: <Starter /> },
-      { path: "/about", exact: true, element: <About /> },
-      { path: "/alerts", exact: true, element: <Alerts /> },
-      { path: "/badges", exact: true, element: <Badges /> },
-      { path: "/buttons", exact: true, element: <Buttons /> },
-      { path: "/cards", exact: true, element: <Cards /> },
-      { path: "/grid", exact: true, element: <Grid /> },
-      { path: "/table", exact: true, element: <Tables /> },
-      { path: "/forms", exact: true, element: <Forms /> },
-      { path: "/breadcrumbs", exact: true, element: <Breadcrumbs /> },
-    ],
-    
-  },
-  {
-    path: "/signin", element:<SignIn />,
-  },
-  {
-    path: "/studentqr", element:<StudentQR/>,
-  },
-
+    {
+        path: "",
+        element: <FullLayout/>,
+        children: [
+            {path: "starter", element: <Starter/>},
+            {path: "about", element: <About/>},
+            {path: "alerts", element: <Alerts/>},
+            {path: "badges", element: <Badges/>},
+            {path: "buttons", element: <Buttons/>},
+            {path: "cards", element: <Cards/>},
+            {path: "grid", element: <Grid/>},
+            {path: "table", element: <Tables/>},
+            {path: "forms", element: <Forms/>},
+            {path: "breadcrumbs", element: <Breadcrumbs/>},
+            // { path: "*", element: <Navigate to="/starter" /> },
+        ],
+    },
 ];
 
 export default ThemeRoutes;
