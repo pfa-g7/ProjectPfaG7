@@ -18,6 +18,7 @@ const Tables = lazy(() => import("../views/ui/Tables"));
 const Forms = lazy(() => import("../views/ui/Forms"));
 const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 const SignIn = lazy(() => import("../views/SignIn"));
+const StudentQR = lazy(() => import("../views/StudentQR"));
 
 /*****Routes******/
 
@@ -42,6 +43,9 @@ const ThemeRoutes = [
   },
   {
     path: "/signin", element:<SignIn />,
+  },
+  {
+    path: "/studentqr", element:<StudentQR/>,
   },
 
 ];

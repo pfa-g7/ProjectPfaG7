@@ -39,8 +39,8 @@ function SignIn() {
             <p className="text-center fw-bold mx-3 mb-0">Or</p>
           </div>
 
-          <Input wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"/>
-          <Input wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg"/>
+          <Input className='mb-4' label='Email address' id='formControlLg' type='email' size="lg"/>
+          <Input className='mt-4' label='Password' id='formControlLg' type='password' size="lg"/>
 
           <div className="d-flex justify-content-between mb-4">
             <Input type='checkbox' name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />

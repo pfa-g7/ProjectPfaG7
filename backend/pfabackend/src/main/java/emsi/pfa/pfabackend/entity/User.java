@@ -1,5 +1,6 @@
 package emsi.pfa.pfabackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import emsi.pfa.pfabackend.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
@@ -33,6 +34,7 @@ public class User implements UserDetails {
     private Role role;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private Collection<Token> tokens;
 
     @Override

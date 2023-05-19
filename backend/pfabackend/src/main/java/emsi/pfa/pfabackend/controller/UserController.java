@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/auth")
 public class UserController {
     @Autowired
     private UserImplService userService;
@@ -24,7 +24,7 @@ public class UserController {
     public void save(@RequestBody User user){
         userService.save(user);
     }
-    @GetMapping("/")
+    @GetMapping("/users")
     public List<User> findAll(){
         return userService.findAll();
     }
