@@ -38,7 +38,11 @@ dependencies:
   google_fonts:
   flutter_svg: ^2.0.5
   firebase_auth: ^4.4.2
+  flutter_blue: ^0.7.3
   firebase_core: ^2.10.0
+  qr_flutter: ^4.0.0
+  flutter_barcode_scanner: ^2.0.0
+  # flutter_scanner:^2.1.0
 
 dev_dependencies:
   flutter_test:
