@@ -16,6 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String? qrResult;
   final user = FirebaseAuth.instance.currentUser;
+  String email = "${user?.email}";
 
   Future qrCodeScanner() async {
     String qResult;
@@ -44,6 +45,95 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Container(
+              decoration: const BoxDecoration(
+                  //color: Color(0xFFD4E7FE),
+                  gradient: LinearGradient(
+                      colors: [
+                        Color(0xFFD4E7FE),
+                        Color(0xFFF0F0F0),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.6, 0.3])),
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: RichText(
+                      text: const TextSpan(
+                        text: "LogOut",
+                        style: TextStyle(
+                            color: Color(0XFF263064),
+                            fontSize: 12,
+                            fontWeight: FontWeight.w900),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(width: 1, color: Colors.white),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.blueGrey.withOpacity(0.2),
+                              blurRadius: 12,
+                              spreadRadius: 8,
+                            )
+                          ],
+
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                           "Hi, ${user.email  ''}",
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w900,
+                              color: Color(0XFF343E87),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Here is a list of schedule",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "You need to check...",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
             Text('Signed in as , ${user?.email}'),
             MaterialButton(
               onPressed: () {
@@ -94,6 +184,67 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(width: 1, color: Colors.white),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.blueGrey.withOpacity(0.2),
+                              blurRadius: 12,
+                              spreadRadius: 8,
+                            )
+                          ],
+                          image: const DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                "https://images.unsplash.com/photo-1541647376583-8934aaf3448a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Hi Jackie",
+                            style: TextStyle(
+                              fontSize: 25,
+                              fontWeight: FontWeight.w900,
+                              color: Color(0XFF343E87),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Here is a list of schedule",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            "You need to check...",
+                            style: TextStyle(
+                              fontSize: 13,
+                              color: Colors.blueGrey,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                   /***box start */
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.center,

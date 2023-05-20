@@ -11,6 +11,7 @@ class BarCodeScanner extends StatefulWidget {
 
 class _BarCodeScannerState extends State<BarCodeScanner> {
   String? barResult;
+
   String? qrResult;
 
   Future barCodeScanner() async {
@@ -48,7 +49,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "QR Code Scanner",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
         ),
@@ -58,12 +59,12 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 100),
+                padding: const EdgeInsets.symmetric(horizontal: 100),
                 child: MaterialButton(
                     onPressed: qrCodeScanner,
                     color: Colors.blue,
-                    shape: StadiumBorder(),
-                    child: Row(
+                    shape: const StadiumBorder(),
+                    child: const Row(
                       children: [
                         Icon(
                           Icons.camera,
@@ -78,13 +79,13 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
                       ],
                     )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
                 qrResult == null ? "Scan QR Code" : "Result :   $qrResult",
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                    color: Colors.black, fontWeight: FontWeight.bold),
               )
             ],
           ),
