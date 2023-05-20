@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import * as XLSX from 'xlsx';
 import FiliereService from "../../services/filiereService";
 import SemestreService from "../../services/semestreService";
 import StudentService from "../../services/studentService";
 import ModuleService from "../../services/moduleService";
 import ExamService from "../../services/examService";
+import { Button, Input, Row, Col } from "reactstrap";
 
 const ExcelUploadComponent = () => {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -19,9 +20,9 @@ const ExcelUploadComponent = () => {
             const fileReader = new FileReader();
             fileReader.onload = async (e) => {
                 const arrayBuffer = e.target.result;
-                const workbook = XLSX.read(arrayBuffer, {type: 'array'});
+                const workbook = XLSX.read(arrayBuffer, { type: 'array' });
                 const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-                const data = XLSX.utils.sheet_to_json(worksheet, {header: 1});
+                const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
                 data.splice(0, 2)
 
                 for (let row of data) {
@@ -288,10 +289,18 @@ const ExcelUploadComponent = () => {
         }
     };
 
-    return (<div>
-        <input type="file" onChange={handleFileChange}/>
-        <button onClick={handleUpload}>Upload</button>
-    </div>);
+    return (
+
+        <Row>
+            <Col lg="8" xxl="8">
+                <Input type="file" onChange={handleFileChange} />
+            </Col>
+            <Col className="text-end" lg="4" xxl="4">
+                <Button className="my-3 btn btn-success " onClick={handleUpload}>Upload</Button>
+            </Col>
+        </Row>
+
+    );
 };
 
 export default ExcelUploadComponent;
