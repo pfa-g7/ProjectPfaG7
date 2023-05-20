@@ -8,7 +8,7 @@ const AuthGuard = ({children}) => {
     const navigate = useNavigate();
     const routing = useRoutes(ThemeRoutes);
     useEffect(() => {
-        if (isAuthenticated()) {
+        if (!isAuthenticated()) {
             navigate("/login");
         }
     }, [routing, navigate]);

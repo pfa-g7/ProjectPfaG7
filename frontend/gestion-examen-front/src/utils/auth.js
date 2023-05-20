@@ -31,9 +31,11 @@ const isTokenExpired = token => {
 const login = async (email, password) => {
     const response = await axios.post(`${API_URL}/authenticate`, {email, password});
     const token = response.data.access_token;
+    const user = response.data.user;
     console.log(token)
-    console.log(response)
+    console.log(user)
     localStorage.setItem('token', token);
+    localStorage.setItem('user', user);
     setAuthToken(token);
 }
 
@@ -47,6 +49,7 @@ const logout = () => {
 }
 
 const getAuthToken = () => localStorage.getItem('token');
+const getUserFromLocalCache = () => JSON.parse(localStorage.getItem('user'));
 
 const isAuthenticated = () => {
     const token = getAuthToken();
@@ -62,4 +65,5 @@ export {
     logout,
     getAuthToken,
     isAuthenticated,
+    getUserFromLocalCache
 };
