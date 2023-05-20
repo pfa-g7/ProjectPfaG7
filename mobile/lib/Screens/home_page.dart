@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'scanner/scanCode.dart';
-import 'scanner/barcode_scanner.dart';
 import '../widgets/bottom_navigation_bar_widget.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
@@ -16,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String? qrResult;
   final user = FirebaseAuth.instance.currentUser;
-  String email = "${user?.email}";
+  // String email = "${user?.email}";
 
   Future qrCodeScanner() async {
     String qResult;
@@ -35,6 +33,22 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepOrangeAccent,
+        centerTitle: true,
+        title: const Text(
+          "Home",
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              FirebaseAuth.instance.signOut();
+            },
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationStateWidget(
         title: "Confirmer la presence",
         onPressed: qrCodeScanner,
@@ -43,11 +57,11 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               decoration: const BoxDecoration(
-                  //color: Color(0xFFD4E7FE),
+                  color: Color(0xFFD4E7FE),
                   gradient: LinearGradient(
                       colors: [
                         Color(0xFFD4E7FE),
@@ -56,75 +70,34 @@ class _HomePageState extends State<HomePage> {
                       begin: Alignment.topCenter,
                       end: Alignment.bottomCenter,
                       stops: [0.6, 0.3])),
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
               child: Column(
                 children: [
-                  Container(
-                    alignment: Alignment.centerRight,
-                    child: RichText(
-                      text: const TextSpan(
-                        text: "LogOut",
-                        style: TextStyle(
-                            color: Color(0XFF263064),
-                            fontSize: 12,
-                            fontWeight: FontWeight.w900),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(width: 1, color: Colors.white),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blueGrey.withOpacity(0.2),
-                              blurRadius: 12,
-                              spreadRadius: 8,
-                            )
-                          ],
-
-                        ),
-                      ),
                       const SizedBox(
                         width: 20,
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                           "Hi, ${user.email  ''}",
-                            style: TextStyle(
+                            "Hi, ${user?.email}",
+                            style: const TextStyle(
                               fontSize: 25,
                               fontWeight: FontWeight.w900,
-                              color: Color(0XFF343E87),
+                              color: Color.fromARGB(255, 161, 161, 161),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
-                          Text(
+                          const Text(
                             "Here is a list of schedule",
                             style: TextStyle(
                               fontSize: 13,
-                              color: Colors.blueGrey,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "You need to check...",
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.blueGrey,
+                              color: Color.fromARGB(255, 161, 161, 161),
                             ),
                           ),
                         ],
@@ -132,45 +105,6 @@ class _HomePageState extends State<HomePage> {
                     ],
                   )
                 ],
-              ),
-            ),
-            Text('Signed in as , ${user?.email}'),
-            MaterialButton(
-              onPressed: () {
-                FirebaseAuth.instance.signOut();
-              },
-              color: Colors.deepOrangeAccent,
-              child: const Text('Sign Out'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ScanningWidget()),
-                );
-              },
-              child: const Text(
-                'le fichier',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const BarCodeScanner()),
-                );
-              },
-              child: const Text(
-                'scanner le fichier',
-                style: TextStyle(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.bold,
-                ),
               ),
             ),
             Container(
@@ -184,68 +118,6 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        width: 40,
-                        height: 40,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          border: Border.all(width: 1, color: Colors.white),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.blueGrey.withOpacity(0.2),
-                              blurRadius: 12,
-                              spreadRadius: 8,
-                            )
-                          ],
-                          image: const DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                "https://images.unsplash.com/photo-1541647376583-8934aaf3448a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 20,
-                      ),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Hi Jackie",
-                            style: TextStyle(
-                              fontSize: 25,
-                              fontWeight: FontWeight.w900,
-                              color: Color(0XFF343E87),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Here is a list of schedule",
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.blueGrey,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 8,
-                          ),
-                          Text(
-                            "You need to check...",
-                            style: TextStyle(
-                              fontSize: 13,
-                              color: Colors.blueGrey,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  /***box start */
                   const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
