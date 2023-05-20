@@ -17,7 +17,7 @@ function SignIn() {
             alert(email)
             alert(password)
             await login(email, password);
-            navigate('/starter');
+            navigate('');
         } catch (error) {
             console.error(error);
         }
