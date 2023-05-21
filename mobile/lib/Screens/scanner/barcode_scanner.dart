@@ -39,7 +39,7 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
     }
     if (!mounted) return;
     setState(() {
-      qrResult = qResult;
+      qrResult;
     });
   }
 
@@ -64,8 +64,8 @@ class _BarCodeScannerState extends State<BarCodeScanner> {
                     onPressed: qrCodeScanner,
                     color: Colors.blue,
                     shape: const StadiumBorder(),
-                    child: const Row(
-                      children: [
+                    child: Row(
+                      children: const [
                         Icon(
                           Icons.camera,
                           color: Colors.black,
