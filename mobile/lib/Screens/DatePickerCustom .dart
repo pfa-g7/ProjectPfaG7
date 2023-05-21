@@ -34,7 +34,7 @@ class _DatePickerCustomState extends State<DatePickerCustom> {
                   color: Colors.orange,
                 ),
                 Expanded(
-                    child: Text("Workout",
+                    child: Text("exams",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
