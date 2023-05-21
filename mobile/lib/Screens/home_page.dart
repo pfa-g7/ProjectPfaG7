@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../widgets/bottom_navigation_bar_widget.dart';
 import 'package:flutter/services.dart';
+import 'DatePickerCustom .dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import './scanner/scanCode.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -64,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                   color: Color(0xFFD4E7FE),
                   gradient: LinearGradient(
                       colors: [
-                        Color(0xFFD4E7FE),
+                        Color(0xFFF0F0F0),
                         Color(0xFFF0F0F0),
                       ],
                       begin: Alignment.topCenter,
@@ -85,18 +87,8 @@ class _HomePageState extends State<HomePage> {
                           Text(
                             "Hi, ${user?.email}",
                             style: const TextStyle(
-                              fontSize: 25,
+                              fontSize: 19,
                               fontWeight: FontWeight.w900,
-                              color: Color.fromARGB(255, 161, 161, 161),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          const Text(
-                            "Here is a list of schedule",
-                            style: TextStyle(
-                              fontSize: 13,
                               color: Color.fromARGB(255, 161, 161, 161),
                             ),
                           ),
@@ -107,6 +99,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
+            DatePickerCustom(),
             Container(
               margin: const EdgeInsets.only(bottom: 15),
               padding: const EdgeInsets.all(10),
@@ -118,11 +111,11 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const Column(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Text(
-                        "07:00",
+                        "08:00",
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
@@ -144,54 +137,275 @@ class _HomePageState extends State<HomePage> {
                       SizedBox(
                         width: MediaQuery.of(context).size.width - 160,
                         child: const Text(
-                          "The Basic of Typography II",
+                          "Module 1",
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.location_on,
-                            color: Colors.grey,
-                            size: 20,
-                          ),
-                          const SizedBox(
-                            width: 5,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width - 160,
-                            child: const Text(
-                              "Room C1, Faculty of Art & Design Building",
-                              overflow: TextOverflow.ellipsis,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ScanningWidget(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on,
+                              color: Colors.grey,
+                              size: 20,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width - 160,
+                              child: const Text(
+                                "salle 7",
+                                overflow: TextOverflow.ellipsis,
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 13),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // Action à effectuer lorsque la deuxième Row est cliquée
+                        },
+                        child: Row(
+                          children: const [
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80",
+                              ),
+                              radius: 10,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "etage 2",
                               style:
                                   TextStyle(color: Colors.grey, fontSize: 13),
                             ),
-                          )
-                        ],
-                      ),
-                      const Row(
-                        children: [
-                          CircleAvatar(
-                            backgroundImage: NetworkImage(
-                                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80"),
-                            radius: 10,
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            "Gabriel Sutton",
-                            style: TextStyle(color: Colors.grey, fontSize: 13),
-                          )
-                        ],
+                          ],
+                        ),
                       ),
                     ],
-                  )
+                  ),
+
                   /***box start */
                 ],
               ),
             ),
-            /*start scan button bar */
+            Container(
+              margin: const EdgeInsets.only(bottom: 15),
+              padding: const EdgeInsets.all(10),
+              height: 100,
+              decoration: BoxDecoration(
+                color: const Color(0xFFF9F9FB),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "10:00",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "AM",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    height: 100,
+                    width: 1,
+                    color: Colors.grey.withOpacity(0.5),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 160,
+                        child: const Text(
+                          "Module 1",
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ScanningWidget(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on,
+                              color: Colors.grey,
+                              size: 20,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width - 160,
+                              child: const Text(
+                                "salle 7",
+                                overflow: TextOverflow.ellipsis,
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 13),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // Action à effectuer lorsque la deuxième Row est cliquée
+                        },
+                        child: Row(
+                          children: const [
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80",
+                              ),
+                              radius: 10,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "etage 5",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 13),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  /***box start */
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(bottom: 15),
+              padding: const EdgeInsets.all(10),
+              height: 100,
+              decoration: BoxDecoration(
+                color: const Color(0xFFF9F9FB),
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "01:00",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "PM",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    height: 100,
+                    width: 1,
+                    color: Colors.grey.withOpacity(0.5),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width - 160,
+                        child: const Text(
+                          "Module 2",
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ScanningWidget(),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            const Icon(
+                              Icons.location_on,
+                              color: Colors.grey,
+                              size: 20,
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width - 160,
+                              child: const Text(
+                                "salle 8",
+                                overflow: TextOverflow.ellipsis,
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 13),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          // Action à effectuer lorsque la deuxième Row est cliquée
+                        },
+                        child: Row(
+                          children: const [
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=80",
+                              ),
+                              radius: 10,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "etage 2",
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 13),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  /***box start */
+                ],
+              ),
+            ), /*start scan button bar */
 
             /*end scan button bar */
           ],
