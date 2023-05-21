@@ -288,7 +288,7 @@ function Students() {
                                     <td>{studente.numAppoge}</td>
                                     <td>{studente.cne}</td>
                                     <td><QRCode
-                                                value={`Appoge: ${studente?.numAppoge}\n CNE: ${studente?.cne}\n CNE: ${studente?.firstName}\n CNE: ${studente?.lastName}`}/>
+                                                value={`Appoge: ${studente?.numAppoge}\n CNE: ${studente?.cne}\n firstName: ${studente?.firstName}\n lastName: ${studente?.lastName}`}/>
                                     </td>
                                     <td>
                                         <button className="btn btn-primary btn-sm mx-1" onClick={() =>

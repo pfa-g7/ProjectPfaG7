@@ -1,14 +1,15 @@
 import {Col, Row} from "reactstrap";
-
+import React, { useState, useEffect } from "react";
 import Import from "./ui/Import";
 import Excel from "../Components/dashboard/Excel";
+import { getUserFromLocalCache } from "../utils/auth";
 
 
 
 const Starter = () => {
-   /* useEffect(() => {
+    useEffect(() => {
         console.log(getUserFromLocalCache())
-    }, []);*/
+    }, []);
     return (
         <div>
             {/***Top Cards***/}

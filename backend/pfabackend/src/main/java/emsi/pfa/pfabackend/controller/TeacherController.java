@@ -22,7 +22,7 @@ public class TeacherController {
             return teacherService.findAll();
         }
         @GetMapping("/{id}")
-        public Optional<Teacher> findStudentById(@PathVariable Integer id){
+        public Optional<Teacher> findTeacherById(@PathVariable Integer id){
             return teacherService.findById(id);
         }
 
