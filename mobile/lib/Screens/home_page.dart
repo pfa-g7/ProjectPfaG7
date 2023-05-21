@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../widgets/bottom_navigation_bar_widget.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,22 +11,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? qrResult;
+  String? _qrResult;
   final user = FirebaseAuth.instance.currentUser;
   // String email = "${user?.email}";
 
   Future qrCodeScanner() async {
-    String qResult;
-    try {
-      qResult = await FlutterBarcodeScanner.scanBarcode(
-          "#2097F3", "Cancel", true, ScanMode.QR);
-    } on PlatformException {
-      qResult = "Failed to get Plateform Version";
-    }
-    if (!mounted) return;
-    setState(() {
-      qrResult = qResult;
-    });
+    // String? qResult;
+    // try {
+    //   qResult = await FlutterBarcodeScanner.scanBarcode(
+    //       "#2097F3", "Cancel", true, ScanMode.QR);
+    // } on PlatformException {
+    //   qResult = "Failed to get Plateform Version";
+    // }
+    // if (!mounted) return;
+
+    // setState(() {
+    //   _qrResult = qResult;
+    // });
+    Get.toNamed(
+      "/StudentPage",
+      arguments: {'res': "heoooooo"},
+    );
   }
 
   @override

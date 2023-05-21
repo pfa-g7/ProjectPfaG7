@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:mobile/screens/auth/login_page.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:mobile/Screens/Welcome/welcome_screen.dart';
-// import 'package:flutter_blue/flutter_blue.dart';
 
 class ScanningWidget extends StatefulWidget {
+  const ScanningWidget({super.key});
+
   @override
   _ScanningWidgetState createState() => _ScanningWidgetState();
 }
@@ -40,7 +40,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Scan device'),
+        title: const Text('Scan device'),
       ),
       body: Column(
         children: [
@@ -54,15 +54,15 @@ class _ScanningWidgetState extends State<ScanningWidget> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         ListTile(
-                          leading: Icon(Icons.logout),
-                          title: Text('Log Out'),
+                          leading: const Icon(Icons.logout),
+                          title: const Text('Log Out'),
                           onTap: () async {
                             await FirebaseAuth.instance.signOut();
                             Navigator.pop(context);
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => WelcomeScreen(),
+                                builder: (context) => const LoginPage(),
                               ),
                             );
                           },
@@ -74,21 +74,21 @@ class _ScanningWidgetState extends State<ScanningWidget> {
               );
             },
             child: Container(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               color: Colors.blue,
               child: Row(
                 children: [
                   CircleAvatar(
+                    radius: 30,
                     child: Text(
                       _user?.email?.substring(0, 1).toUpperCase() ?? '?',
                       style: TextStyle(fontSize: 24),
                     ),
-                    radius: 30,
                   ),
-                  SizedBox(width: 16),
+                  const SizedBox(width: 16),
                   Text(
                     'Hello, ${_user?.email}',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: const TextStyle(fontSize: 20, color: Colors.white),
                   ),
                 ],
               ),
@@ -101,11 +101,11 @@ class _ScanningWidgetState extends State<ScanningWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Exams:',
                       style: TextStyle(fontSize: 24),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     DataTable(
                       columns: const [
                         DataColumn(label: Text('Exam')),
@@ -151,12 +151,12 @@ class _ScanningWidgetState extends State<ScanningWidget> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       qrCode,
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text('Close'),
+                        child: const Text('Close'),
                       ),
                     ],
                   ),
@@ -165,7 +165,7 @@ class _ScanningWidgetState extends State<ScanningWidget> {
             },
           );
         },
-        child: Icon(Icons.qr_code),
+        child: const Icon(Icons.qr_code),
       ),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: stopScan,
