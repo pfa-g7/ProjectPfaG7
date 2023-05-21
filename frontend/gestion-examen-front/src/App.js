@@ -5,10 +5,11 @@ import SignIn from "./views/SignIn";
 
 const App = () => {
     const routing = useRoutes([{
-        path: '/*', element: <AuthGuard/>, children: Themeroutes
-    }, {
+        path: '/*', element: <AuthGuard/>, children: Themeroutes},
+     {
         path: '/login', element: <SignIn/>,
-    },]);
+     },
+        ]);
     return (<div className="dark">{routing}</div>)
 };
 

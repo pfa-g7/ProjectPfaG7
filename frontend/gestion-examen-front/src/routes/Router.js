@@ -16,6 +16,7 @@ const Grid = lazy(() => import("../views/ui/Grid"));
 const Tables = lazy(() => import("../views/ui/Tables"));
 const Forms = lazy(() => import("../views/ui/Forms"));
 const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
+const StudentList = lazy(() => import("../views/ui/StudentList"));
 
 /*****Routes******/
 
@@ -34,6 +35,7 @@ const ThemeRoutes = [
             {path: "table", element: <Tables/>},
             {path: "forms", element: <Forms/>},
             {path: "breadcrumbs", element: <Breadcrumbs/>},
+            {path: "students", element: <StudentList/>,},
             // { path: "*", element: <Navigate to="/starter" /> },
         ],
     },
