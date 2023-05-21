@@ -1,6 +1,6 @@
 package emsi.pfa.pfabackend.entity;
 
-import emsi.pfa.pfabackend.token.Token;
+
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,7 +17,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-//@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy : InheritanceType.JOINED)
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +32,6 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    @OneToMany(mappedBy = "user")
-    private Collection<Token> tokens;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -64,5 +61,10 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + "\"id:\"" + id + ", \"username\":" + username + ", \"password\":" + password + ", \"email\":" + email + ", \"firstName\":" + firstName + ", \"lastName\":" + lastName + ", \"cin\":" + cin + ", \"role\":" + role + "}";
     }
 }

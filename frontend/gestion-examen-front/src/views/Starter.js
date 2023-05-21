@@ -6,9 +6,12 @@ import Excel from "../Components/dashboard/Excel";
 
 
 const Starter = () => {
-  return (
-    <div>
-      {/***Top Cards***/}
+   /* useEffect(() => {
+        console.log(getUserFromLocalCache())
+    }, []);*/
+    return (
+        <div>
+            {/***Top Cards***/}
 
       {/***Sales & Feed***/}
       
