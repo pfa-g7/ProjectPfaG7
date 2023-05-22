@@ -1,14 +1,15 @@
 import {lazy} from "react";
-import { Navigate } from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import Students from "../Components/dashboard/Students";
 import Professeurs from "../Components/dashboard/Professeurs";
 import Surveillant from "../Components/dashboard/Surveillants";
 import Users from "../Components/dashboard/Users";
 import ProcesV from "../Components/dashboard/ProcesV";
-
+import Home from "../Components/dashboard/student/Home";
 
 /****Layouts*****/
 const FullLayout = lazy(() => import("../layouts/FullLayout.js"));
+const StudentLayout = lazy(() => import("../layouts/StudentLayout"));
 
 /***** Pages ****/
 
@@ -28,10 +29,10 @@ const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 
 const ThemeRoutes = [
     {
-        path: "",
+        path: "admin",
         element: <FullLayout/>,
         children: [
-            { path: "", element: <Navigate to="/starter" /> },
+            {path: "", element: <Navigate to="/admin/starter"/>},
             {path: "starter", element: <Starter/>},
             {path: "about", element: <About/>},
             {path: "alerts", element: <Alerts/>},
@@ -42,12 +43,20 @@ const ThemeRoutes = [
             {path: "table", element: <Tables/>},
             {path: "forms", element: <Forms/>},
             {path: "breadcrumbs", element: <Breadcrumbs/>},
-            { path: "students", exact: true, element: <Students /> },
-            { path: "teachers", exact: true, element: <Professeurs /> },
-            { path: "surveillants", exact: true, element: <Surveillant /> },
-            { path: "users", exact: true, element: <Users /> },
-            { path: "proces", exact: true, element: <ProcesV /> },
+            {path: "students", exact: true, element: <Students/>},
+            {path: "teachers", exact: true, element: <Professeurs/>},
+            {path: "surveillants", exact: true, element: <Surveillant/>},
+            {path: "users", exact: true, element: <Users/>},
+            {path: "proces", exact: true, element: <ProcesV/>},
             // { path: "*", element: <Navigate to="/starter" /> },
+        ],
+    },
+    {
+        path: "student",
+        element: <StudentLayout/>,
+        children: [
+            {path: "", element: <Home/>},
+            {path: "starter", element: <Starter/>}
         ],
     },
 ];

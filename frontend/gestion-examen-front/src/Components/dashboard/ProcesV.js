@@ -1,5 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Table, Card, CardHeader, CardBody, Input, Form, FormGroup, Label, Button, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import {useState} from 'react';
+import {
+    Button,
+    Card,
+    CardBody,
+    Form,
+    FormGroup,
+    Input,
+    Label,
+    Pagination,
+    PaginationItem,
+    PaginationLink,
+    Table
+} from 'reactstrap';
 import axios from 'axios';
 
 function ProcesV() {
@@ -51,38 +63,41 @@ function ProcesV() {
             {exams.length > 0 && (
                 <Card>
                     <CardBody>
-                        <h5>Exam Report for : {selectedDate}</h5><Table className="no-wrap mt-3 align-middle" responsive borderless>
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Etudiant</th>
-                                    <th>Module</th>
-                                    <th>Presence</th>
-                                    <th>date_Exam</th>
-                                    <th>Heure</th>
-                                    <th>Salle</th>
-                                    <th>num_Table</th>
-                                    <th>Filiere</th>
-                                    <th>Semestre</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {currentItems.map((exam, index) => (
-                                    <tr key={exam.id}>
-                                        <th scope="row">{exam.id}</th>
-                                        <td>{exam.student.firstName} {exam.student.lastName}</td>
-                                        <td>{exam.module.libelle}</td>
-                                        <td>{exam.presence === 1 ? <span className="p-2 bg-danger rounded-circle d-inline-block ms-3"></span> : <span className="p-2 bg-success rounded-circle d-inline-block ms-3"></span>}</td>
-                                        <td>{selectedDate}</td>
-                                        <td>{exam.heure}</td>
-                                        <td>{exam.salle}</td>
-                                        <td>{exam.numTable}</td>
-                                        <td>{exam.module.filiere.libelle}</td>
-                                        <td>{exam.module.semestre.libelle}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </Table>
+                        <h5>Exam Report for : {selectedDate}</h5><Table className="no-wrap mt-3 align-middle" responsive
+                                                                        borderless>
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Etudiant</th>
+                            <th>Module</th>
+                            <th>Presence</th>
+                            <th>date_Exam</th>
+                            <th>Heure</th>
+                            <th>Salle</th>
+                            <th>num_Table</th>
+                            <th>Filiere</th>
+                            <th>Semestre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {currentItems.map((exam, index) => (
+                            <tr key={exam.id}>
+                                <th scope="row">{exam.id}</th>
+                                <td>{exam.student.firstName} {exam.student.lastName}</td>
+                                <td>{exam.module.libelle}</td>
+                                <td>{exam.presence === 1 ?
+                                    <span className="p-2 bg-danger rounded-circle d-inline-block ms-3"></span> :
+                                    <span className="p-2 bg-success rounded-circle d-inline-block ms-3"></span>}</td>
+                                <td>{selectedDate}</td>
+                                <td>{exam.heure}</td>
+                                <td>{exam.salle}</td>
+                                <td>{exam.numTable}</td>
+                                <td>{exam.module.filiere.libelle}</td>
+                                <td>{exam.module.semestre.libelle}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </Table>
                         {/* Render pagination */}
                         <Pagination>
                             {Array(Math.ceil(exams.length / itemsPerPage))

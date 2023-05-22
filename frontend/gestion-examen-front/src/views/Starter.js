@@ -1,9 +1,8 @@
 import {Col, Row} from "reactstrap";
-import React, { useState, useEffect } from "react";
+import React, {useEffect} from "react";
 import Import from "./ui/Import";
 import Excel from "../Components/dashboard/Excel";
-import { getUserFromLocalCache } from "../utils/auth";
-
+import {getUserFromLocalCache} from "../utils/auth";
 
 
 const Starter = () => {
@@ -14,19 +13,19 @@ const Starter = () => {
         <div>
             {/***Top Cards***/}
 
-      {/***Sales & Feed***/}
-      
-        {/*<Feeds />*/}
-        <Import />
-      {/***Table ***/}
-      <Row>
-        <Col lg="12">
-          <Excel />
-          {/*<ProjectTables />*/}
-        </Col>
-      </Row>
-      {/***Blog Cards***/}
-      {/*<Row>
+            {/***Sales & Feed***/}
+
+            {/*<Feeds />*/}
+            <Import/>
+            {/***Table ***/}
+            <Row>
+                <Col lg="12">
+                    <Excel/>
+                    {/*<ProjectTables />*/}
+                </Col>
+            </Row>
+            {/***Blog Cards***/}
+            {/*<Row>
         {BlogData.map((blg, index) => (
           <Col sm="6" lg="6" xl="3" key={index}>
             <Blog
@@ -39,8 +38,8 @@ const Starter = () => {
           </Col>
         ))}
         </Row>*/}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default Starter;

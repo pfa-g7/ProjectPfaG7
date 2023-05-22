@@ -12,7 +12,7 @@ import {
     Row,
     Table
 } from "reactstrap";
-import QRCode, {QRCodeCanvas, QRCodeSVG} from "qrcode.react";
+import QRCode from "qrcode.react";
 import emsi from "../image/emsi.png";
 
 
@@ -159,50 +159,51 @@ function Students() {
        <html>
         <head>
           <title>Student Document</title>
- <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-  }
+          <style>
+              body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+              }
+            
+              h1 {
+                font-size: 24px;
+                text-align: center;
+                margin-bottom: 20px;
+              }
+              
+              h2 {
+                 font-size : 16px;
+                 float: right;
+              }
+            
+              
+              img{
+                height: 80px;
+                float: left;
+              }
+            
+              #a{
+                margin-top: 50px;
+              }
+            
+             #b{
+                margin-top: 50px;
+              }
+            
+              .info{
+                float: left;
+                margin-top: 50px;
+              }
+            
+            
+            
+              
+            </style>
+              <h1>Convocation des examens</h1>
+              <h2>Année Universitaire : 2022/2023</h2>
+              <img src="${emsi}" alt="emsi" />
+        <head/>
 
-  h1 {
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-     font-size : 16px;
-     float: right;
-  }
-
-  
-  img{
-    height: 80px;
-    float: left;
-  }
-
-  #a{
-    margin-top: 50px;
-  }
-
- #b{
-    margin-top: 50px;
-  }
-
-  .info{
-    float: left;
-    margin-top: 50px;
-  }
-
-
-
-  
-</style>
-<h1>Convocation des examens</h1>
-          <h2>Année Universitaire : 2022/2023</h2>
-          <img src="${emsi}" alt="emsi" />
-        </head>
         <body>
           <div class="info">
            <div>
@@ -231,9 +232,8 @@ function Students() {
              <p>- Toute fraude ou tentative de fraude sera sanctionnée conformément à la réglemetaion en vigueur.</p>
           </div>
     
-         ${<QRCode value={`Appoge: ${studente?.numAppoge}\\n CNE: ${studente?.cne}\\n
-        firstName: ${studente?.firstName}\\n lastName: ${studente?.lastName}`}
-         />}  
+        
+        
    
            <script>
             window.onload = function() {
@@ -244,10 +244,10 @@ function Students() {
         </body>
       </html>
     `
-    )
+        )
 
         printWindow.document.close();
-      };
+    };
 
 
     return (
