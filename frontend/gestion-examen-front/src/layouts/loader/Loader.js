@@ -1,6 +1,6 @@
 import React from "react";
 import "./loader.scss";
-import { Spinner } from "reactstrap";
+import {Spinner} from "reactstrap";
 
 const Loader = () => (
   <div className="fallback-spinner">

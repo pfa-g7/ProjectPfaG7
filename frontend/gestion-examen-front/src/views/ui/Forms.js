@@ -1,16 +1,4 @@
-import {
-  Card,
-  Row,
-  Col,
-  CardTitle,
-  CardBody,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-} from "reactstrap";
+import {Button, Card, CardBody, CardTitle, Col, Form, FormGroup, FormText, Input, Label, Row,} from "reactstrap";
 
 const Forms = () => {
   return (

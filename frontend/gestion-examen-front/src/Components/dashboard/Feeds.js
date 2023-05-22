@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  ListGroup,
-  CardSubtitle,
-  ListGroupItem,
-  Button,
-} from "reactstrap";
+import {Button, Card, CardBody, CardSubtitle, CardTitle, ListGroup, ListGroupItem,} from "reactstrap";
 
 const FeedData = [
   {

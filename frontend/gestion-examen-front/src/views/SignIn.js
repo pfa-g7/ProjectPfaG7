@@ -1,84 +1,112 @@
-import React from 'react';
-import {Container, Col, Row, Button, Input } from 'reactstrap';
-import { Facebook, Google, Linkedin, Twitter } from 'react-bootstrap-icons';
+import React, {useState} from 'react';
+import {Button, Col, Container, Input, Row} from 'reactstrap';
+import {Facebook, Google, Linkedin, Twitter} from 'react-bootstrap-icons';
 import '../Css/signin.css';
+import {login} from "../utils/auth";
+import {useNavigate} from "react-router-dom";
 
 
 function SignIn() {
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-  return (
-    <Container fluid className="p-3 my-5 h-custom">
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            alert(email)
+            alert(password)
+            await login(email, password);
+            navigate('/starter');
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
-      <Row>
+    return (
+        <Container fluid className="p-3 my-5 h-custom">
 
-        <Col col='10' md='6'>
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" className="img-fluid" alt="Sample image" />
-        </Col>
+            <Row>
 
-        <Col col='4' md='6'>
+                <Col col='10' md='6'>
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                         className="img-fluid" alt="Sample image"/>
+                </Col>
 
-          <div className="d-flex flex-row align-items-center justify-content-center">
+                <Col col='4' md='6'>
 
-            <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+                    <div className="d-flex flex-row align-items-center justify-content-center">
 
-            <Button floating size='md' tag='a' className='me-2' >
-                <Facebook />
+                        <p className="lead fw-normal mb-0 me-3">Sign in with</p>
+
+                        <Button floating size='md' tag='a' className='me-2'>
+                            <Facebook/>
+                        </Button>
+
+                        <Button floating size='md' tag='a' className='me-2'>
+                            <Twitter/>
+                        </Button>
+
+                        <Button floating size='md' tag='a' className='me-2'>
+                            <Linkedin/>
+                        </Button>
+
+                    </div>
+
+                    <div className="divider d-flex align-items-center my-4">
+                        <p className="text-center fw-bold mx-3 mb-0">Or</p>
+                    </div>
+
+                    <Input wrapperClass='mb-4'
+                           onChange={e => setEmail(e.target.value)}
+                           label='Email address'
+                           placeholder="Email address"
+                           value={email}
+                           id='formControlLg' type='email' size="lg"/>
+
+
+                    <Input wrapperClass='mb-4' label='Password' value={password}
+                           placeholder="Password"
+                           onChange={e => setPassword(e.target.value)}
+                           id='formControlLg' type='password' size="lg"/>
+
+                    <div className="d-flex justify-content-between mb-4">
+                        <Input type='checkbox' name='flexCheck' value='' id='flexCheckDefault' label='Remember me'/>
+                        Remember me
+                        <a href="!#">Forgot password?</a>
+                    </div>
+
+                    <div className='text-center text-md-start mt-4 pt-2'>
+                        <Button onClick={handleSubmit} className="mb-0 px-5" size='lg'>Login</Button>
+
+                        {/*<p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="#!"*/}
+                        {/*                                                                      className="link-danger">Register</a>*/}
+                        {/*</p>*/}
+                    </div>
+
+                </Col>
+
+            </Row>
+
+            <Button tag='a' color='none' className='mx-3' style={{color: 'white'}}>
+                <Facebook/>
             </Button>
 
-            <Button floating size='md' tag='a'  className='me-2'>
-              <Twitter />
+            <Button tag='a' color='none' className='mx-3' style={{color: 'white'}}>
+                <Twitter/>
             </Button>
 
-            <Button floating size='md' tag='a'  className='me-2'>
-              <Linkedin />
+            <Button tag='a' color='none' className='mx-3' style={{color: 'white'}}>
+                <Google/>
             </Button>
 
-          </div>
+            <Button tag='a' color='none' className='mx-3' style={{color: 'white'}}>
+                <Linkedin/>
+            </Button>
 
-          <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
 
-          <Input wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"/>
-          <Input wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg"/>
-
-          <div className="d-flex justify-content-between mb-4">
-            <Input type='checkbox' name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-            Remember me
-            <a href="!#">Forgot password?</a>
-          </div>
-
-          <div className='text-center text-md-start mt-4 pt-2'>
-            <Button className="mb-0 px-5" size='lg'>Login</Button>
-            <p className="small fw-bold mt-2 pt-1 mb-2">Don't have an account? <a href="#!" className="link-danger">Register</a></p>
-          </div>
-
-        </Col>
-
-      </Row>
-
-          <Button tag='a' color='none' className='mx-3' style={{ color: 'white' }}>
-            <Facebook />
-          </Button>
-
-          <Button tag='a' color='none' className='mx-3' style={{ color: 'white'  }}>
-            <Twitter />
-          </Button>
-
-          <Button tag='a' color='none' className='mx-3' style={{ color: 'white'  }}>
-            <Google />
-          </Button>
-
-          <Button tag='a' color='none' className='mx-3' style={{ color: 'white'  }}>
-            <Linkedin />
-          </Button>
-
-        
-
-      
-
-    </Container>
-  );
+        </Container>
+    );
 }
 
 export default SignIn;
