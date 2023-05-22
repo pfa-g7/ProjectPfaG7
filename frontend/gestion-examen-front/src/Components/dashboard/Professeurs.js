@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Row, Card, CardBody, CardTitle, CardSubtitle, Table, Pagination, PaginationItem, PaginationLink, Input } from "reactstrap";
+import { faEdit, faTrash, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Professeurs() {
     const [profs, setProfs] = useState([]);
@@ -45,7 +47,7 @@ function Professeurs() {
     };
     const addProf = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/teacher/save', { cin: userCin, email: userEmail, firstName: userFirstName, lastName: userLastName, username: userUserName, password: userPassword, nppr: userNppr });
+            const response = await axios.post('http://localhost:8080/api/teacher/save', { cin: userCin, email: userEmail, firstName: userFirstName, lastName: userLastName, username: userUserName, password: userPassword, nppr: userNppr, role: 'USER' });
             setProfs([...profs, response.data]);
             setUserCin('');
             setUserEmail('');
@@ -208,15 +210,15 @@ function Professeurs() {
                     </div>
                 </div>
                 {userId ? (
-                    <div className="row justify-content-end text-end">
-                        <button className="btn btn-success col-2" onClick={updateProf}>
+                    <div className="row  text-start">
+                        <button className="btn btn-success" onClick={updateProf}>
                             Update Teacher
                         </button>
                     </div>
 
                 ) : (
-                    <div className="row justify-content-end text-end">
-                        <button className="btn btn-primary col-2" onClick={addProf}>
+                    <div className="row text-start">
+                        <button className="btn btn-primary" onClick={addProf}>
                             Add Teacher
                         </button>
                     </div>
@@ -261,14 +263,16 @@ function Professeurs() {
                                     <td>{prof.password}</td>
                                     <td>{prof.nppr}</td>
                                     <td>
-                                        <button className="btn btn-primary btn-sm mx-1" onClick={() =>
-                                            getProfById(prof.id)}>
-                                            Edit
-                                        </button>
-                                        <button className="btn btn-danger btn-sm" onClick={() =>
-                                            deleteProf(prof.id)}>
-                                            Delete
-                                        </button>
+                                    <FontAwesomeIcon
+                                            icon={faEdit}
+                                            className="btn btn-primary btn-sm mx-1 my-1"
+                                            onClick={() => getProfById(prof.id)}
+                                        />
+                                        <FontAwesomeIcon
+                                            icon={faTrash}
+                                            className="btn btn-danger btn-sm my-1 mx-"
+                                            onClick={() => deleteProf(prof.id)}
+                                        />
                                     </td>
                                 </tr>
                             ))}
