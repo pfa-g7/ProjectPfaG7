@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
     // });
     Get.toNamed(
       "/StudentPage",
-      arguments: {'res': "heoooooo"},
+      arguments: {'res': "1904027"},
     );
   }
 

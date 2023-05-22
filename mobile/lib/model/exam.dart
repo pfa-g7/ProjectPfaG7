@@ -1,29 +1,31 @@
+import 'package:mobile/model/module.dart';
+
 class ExamModel {
   int? id;
-  int? presence;
+  bool? presence;
   int? numTable;
-  String? numSalle;
-  int? student;
-  int? module;
-  int? salleSurveillant;
+  String? salle;
+  String? date;
+  String? heure;
+  Module? module;
 
   ExamModel(
       {this.id,
       this.presence,
       this.numTable,
-      this.numSalle,
-      this.student,
-      this.module,
-      this.salleSurveillant});
+      this.salle,
+      this.date,
+      this.heure,
+      this.module});
 
   ExamModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     presence = json['presence'];
     numTable = json['numTable'];
-    numSalle = json['numSalle'];
-    student = json['student'];
-    module = json['module'];
-    salleSurveillant = json['salleSurveillant'];
+    salle = json['salle'];
+    date = json['date'];
+    heure = json['heure'];
+    module = json['module'] != null ? Module.fromJson(json['module']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -31,10 +33,12 @@ class ExamModel {
     data['id'] = id;
     data['presence'] = presence;
     data['numTable'] = numTable;
-    data['numSalle'] = numSalle;
-    data['student'] = student;
-    data['module'] = module;
-    data['salleSurveillant'] = salleSurveillant;
+    data['salle'] = salle;
+    data['date'] = date;
+    data['heure'] = heure;
+    if (module != null) {
+      data['module'] = module!.toJson();
+    }
     return data;
   }
 }
