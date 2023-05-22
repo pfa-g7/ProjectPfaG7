@@ -1,19 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import {
-  Navbar,
-  Collapse,
-  Nav,
-  NavItem,
-  NavbarBrand,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Dropdown,
   Button,
+  Collapse,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Nav,
+  Navbar,
+  NavbarBrand,
+  NavItem,
+  UncontrolledDropdown,
 } from "reactstrap";
-import { ReactComponent as LogoWhite } from "../assets/images/logos/xtremelogowhite.svg";
+import {ReactComponent as LogoWhite} from "../assets/images/logos/xtremelogowhite.svg";
 import user1 from "../assets/images/users/user1.jpg";
 
 const Header = () => {

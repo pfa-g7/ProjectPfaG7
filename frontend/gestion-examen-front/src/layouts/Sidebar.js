@@ -2,13 +2,39 @@ import { Button, Nav, NavItem } from "reactstrap";
 import Logo from "./Logo";
 import { Link, useLocation } from "react-router-dom";
 
+
 const navigation = [
   {
     title: "Dashboard",
     href: "/starter",
     icon: "bi bi-speedometer2",
   },
+  /*{
+    title: "Users",
+    href: "/users",
+    icon: "bi bi-people",
+  },*/
   {
+    title: "Teachers",
+    href: "/teachers",
+    icon: "bi bi-people",
+  },
+  {
+    title: "Surveillants",
+    href: "/surveillants",
+    icon: "bi bi-people",
+  },
+  {
+    title: "Students",
+    href: "/students",
+    icon: "bi bi-people",
+  },
+  {
+    title: "Proces Verbal",
+    href: "/proces",
+    icon: "bi bi-people",
+  },
+  /*{
     title: "Alert",
     href: "/alerts",
     icon: "bi bi-bell",
@@ -52,7 +78,7 @@ const navigation = [
     title: "About",
     href: "/about",
     icon: "bi bi-people",
-  },
+  },*/
 ];
 
 const Sidebar = () => {
@@ -61,8 +87,10 @@ const Sidebar = () => {
   };
   let location = useLocation();
 
+
+
   return (
-    <div className="p-3">
+    <div className="p-3" >
       <div className="d-flex align-items-center">
         <Logo />
         <Button
@@ -72,7 +100,7 @@ const Sidebar = () => {
           onClick={() => showMobilemenu()}
         ></Button>
       </div>
-      <div className="pt-4 mt-2">
+      <div className="pt-4 mt-2" >
         <Nav vertical className="sidebarNav">
           {navigation.map((navi, index) => (
             <NavItem key={index} className="sidenav-bg">

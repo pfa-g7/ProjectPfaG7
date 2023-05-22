@@ -21,6 +21,7 @@ public class SemestreController {
 
     @PostMapping("/save")
     public Semestre save(@RequestBody Semestre s) {
+        System.out.println("s.getLibelle() = " + s.getLibelle());
         return semestreService.save(s);
     }
 }
