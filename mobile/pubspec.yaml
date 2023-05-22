@@ -18,6 +18,7 @@ dependencies:
   firebase_auth: ^4.4.2
   firebase_core: ^2.10.0
   table_calendar: ^2.3.2
+  date_picker_timeline: ^1.2.3
   qr_flutter: ^4.0.0
   flutter_barcode_scanner: ^2.0.0
   flutter_downloader: ^1.6.0

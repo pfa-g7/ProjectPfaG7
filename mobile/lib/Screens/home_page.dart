@@ -1,14 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:get/get.dart';
 import '../widgets/bottom_navigation_bar_widget.dart';
-<<<<<<< HEAD
-=======
 import 'package:flutter/services.dart';
 import 'DatePickerCustom .dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import './scanner/scanCode.dart';
->>>>>>> 1c15d1088a05c53c2d205f4c1041b7d27dfa044e
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,7 +17,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? _qrResult;
+  String? qrResult;
+  var _selectedDate;
+
   final user = FirebaseAuth.instance.currentUser;
   // String email = "${user?.email}";
 
@@ -108,7 +109,8 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            DatePickerCustom(),
+            _buildCalendar(),
+            const Divider(),
             Container(
               margin: const EdgeInsets.only(bottom: 15),
               padding: const EdgeInsets.all(10),
@@ -420,6 +422,24 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildCalendar() {
+    return DatePicker(
+      DateTime.now(),
+      initialSelectedDate: DateTime.now(),
+      selectionColor: Colors.deepOrangeAccent,
+      selectedTextColor: Colors.white,
+      daysCount: 7,
+      onDateChange: (date) {
+        setState(() {
+          final dateParse = DateTime.parse(date.toString());
+
+          _selectedDate =
+              "${dateParse.month}-${dateParse.day}-${dateParse.year}";
+        });
+      },
     );
   }
 }
