@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 
 const kTitleStyle = TextStyle(
   fontFamily: 'OpenSans-Bold',
   fontSize: 12.0,
 );
-
 
 const kAppbarTitleStyle = TextStyle(
   color: Colors.white,
@@ -21,12 +19,10 @@ const kPageTitleStyle = TextStyle(
 
 const kCardSubTitleStyle = TextStyle(
   fontFamily: 'OpenSans-SemiBold',
-  fontSize: 13,
+  fontSize: 15,
 );
 
 const kParaStyle = TextStyle(
   fontFamily: 'OpenSans-SemiBold',
   fontSize: 14,
 );
-
-

@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:mobile/model/exam.dart';
 
 class ExamService {
-  static const _viewUrl = "$apiUrl/exam";
-  static const _addUrl = "$apiUrl/exam/update";
+  static const _viewUrl = "$apiUrl/exam/student";
+  static const _addUrl = "$apiUrl/exam/isPresent";
 
   static List<ExamModel> dataFromJson(String jsonString) {
     final data = json.decode(jsonString);
@@ -16,17 +16,14 @@ class ExamService {
     final response = await http.get(Uri.parse("$_viewUrl/$userId"));
     if (response.statusCode == 200) {
       List<ExamModel> list = dataFromJson(response.body);
-      // log ("message : "+list[0].firstName);
       return list;
     } else {
       return []; //if any error occurs then it return a blank list
     }
   }
 
-  static updateData(int id, ExamModel examModel) async {
-    final res =
-        await http.post(Uri.parse("$_addUrl/$id"), body: examModel.toJson());
-    // log("test : ${res.body}");
+  static updateData(int id, bool presence) async {
+    final res = await http.put(Uri.parse("$_addUrl/$id/$presence"));
     if (res.statusCode == 200) {
       return res.body;
     } else {

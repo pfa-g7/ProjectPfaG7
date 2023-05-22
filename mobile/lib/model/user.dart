@@ -5,6 +5,8 @@ class UserModel {
   String? email;
   String? firstName;
   String? lastName;
+  String? cin;
+  String? role;
   int? numAppoge;
   String? cne;
 
@@ -15,6 +17,8 @@ class UserModel {
       this.email,
       this.firstName,
       this.lastName,
+      this.cin,
+      this.role,
       this.numAppoge,
       this.cne});
 
@@ -25,6 +29,8 @@ class UserModel {
     email = json['email'];
     firstName = json['firstName'];
     lastName = json['lastName'];
+    cin = json['cin'];
+    role = json['role'];
     numAppoge = json['numAppoge'];
     cne = json['cne'];
   }
@@ -37,6 +43,8 @@ class UserModel {
     data['email'] = email;
     data['firstName'] = firstName;
     data['lastName'] = lastName;
+    data['cin'] = cin;
+    data['role'] = role;
     data['numAppoge'] = numAppoge;
     data['cne'] = cne;
     return data;
