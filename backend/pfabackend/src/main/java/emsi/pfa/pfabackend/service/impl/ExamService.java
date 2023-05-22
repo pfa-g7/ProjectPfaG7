@@ -9,6 +9,7 @@ import emsi.pfa.pfabackend.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -36,4 +37,6 @@ public class ExamService {
     public void deleteById(Long aLong) {
         examRepository.deleteById(aLong);
     }
+
+    public List<Exam> findByDate(Date date) { return  examRepository.findByDate(date);}
 }

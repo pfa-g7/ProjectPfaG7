@@ -1,4 +1,10 @@
 import {lazy} from "react";
+import { Navigate } from "react-router-dom";
+import Students from "../Components/dashboard/Students";
+import Professeurs from "../Components/dashboard/Professeurs";
+import Surveillant from "../Components/dashboard/Surveillants";
+import Users from "../Components/dashboard/Users";
+import ProcesV from "../Components/dashboard/ProcesV";
 
 
 /****Layouts*****/
@@ -17,6 +23,7 @@ const Tables = lazy(() => import("../views/ui/Tables"));
 const Forms = lazy(() => import("../views/ui/Forms"));
 const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 
+
 /*****Routes******/
 
 const ThemeRoutes = [
@@ -24,6 +31,7 @@ const ThemeRoutes = [
         path: "",
         element: <FullLayout/>,
         children: [
+            { path: "", element: <Navigate to="/starter" /> },
             {path: "starter", element: <Starter/>},
             {path: "about", element: <About/>},
             {path: "alerts", element: <Alerts/>},
@@ -34,6 +42,11 @@ const ThemeRoutes = [
             {path: "table", element: <Tables/>},
             {path: "forms", element: <Forms/>},
             {path: "breadcrumbs", element: <Breadcrumbs/>},
+            { path: "students", exact: true, element: <Students /> },
+            { path: "teachers", exact: true, element: <Professeurs /> },
+            { path: "surveillants", exact: true, element: <Surveillant /> },
+            { path: "users", exact: true, element: <Users /> },
+            { path: "proces", exact: true, element: <ProcesV /> },
             // { path: "*", element: <Navigate to="/starter" /> },
         ],
     },
