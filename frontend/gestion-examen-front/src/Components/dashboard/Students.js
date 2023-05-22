@@ -88,6 +88,7 @@ function Students() {
         } catch (error) {
             console.error(error);
         }
+        window.location.reload();
     };
     const updateStudent = async () => {
         try {
@@ -119,6 +120,7 @@ function Students() {
         } catch (error) {
             console.error(error);
         }
+        window.location.reload();
     };
     const deleteStudent = async (id) => {
         try {
@@ -141,7 +143,7 @@ function Students() {
     // Filter the data based on the search term
     const filteredData = student.filter((item) => {
         // Modify the condition based on your search requirements
-        return item.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+        return item.firstName?.toLowerCase()?.includes(searchTerm?.toLowerCase());
 
     });
     // Get the current items to display on the current page

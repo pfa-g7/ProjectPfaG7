@@ -32,7 +32,7 @@ const navigation = [
   {
     title: "Proces Verbal",
     href: "/proces",
-    icon: "bi bi-people",
+    icon: "bi bi-card-text",
   },
   /*{
     title: "Alert",
