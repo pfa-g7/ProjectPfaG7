@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:get/get.dart';
 import '../widgets/bottom_navigation_bar_widget.dart';
 import 'package:flutter/services.dart';
+import 'DatePickerCustom .dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import './scanner/scanCode.dart';
 
@@ -21,68 +23,23 @@ class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser;
   // String email = "${user?.email}";
 
-// _reCallMethodes() async {
-//     setState(() {
-//       _isLoading = true;
-//     });
-//     // await _getAndSetbookedTimeSlots();
-
-//     setState(() {
-//       _isLoading = false;
-//     });
-//   }
-
-//   Future<String> _initializeDate() async {
-//     var date = DateTime.now().toString();
-//     var dateParse = DateTime.parse(date);
-//     var formattedDate = "${dateParse.month}-${dateParse.day}-${dateParse.year}";
-
-//     return formattedDate;
-//   }
-
-//   _getAndSetAllInitialData() async {
-//     setState(() {
-//       _isLoading = true;
-//     });
-//     _selectedDate = await _initializeDate(); //Initialize start time
-
-//     setState(() {
-//       _isLoading = false;
-//     });
-//   }
-
-//   Widget _buildCalendar() {
-//     return DatePicker(
-//       DateTime.now(),
-//       initialSelectedDate: DateTime.now(),
-//       selectionColor: Colors.deepOrangeAccent,
-//       selectedTextColor: Colors.white,
-//       daysCount: 7,
-//       onDateChange: (date) {
-//         // New date selected
-//         setState(() {
-//           final dateParse = DateTime.parse(date.toString());
-
-//           _selectedDate =
-//               "${dateParse.month}-${dateParse.day}-${dateParse.year}";
-//           _reCallMethodes();
-//         });
-//       },
-//     );
-//   }
-
   Future qrCodeScanner() async {
-    String qResult;
-    try {
-      qResult = await FlutterBarcodeScanner.scanBarcode(
-          "#2097F3", "Cancel", true, ScanMode.QR);
-    } on PlatformException {
-      qResult = "Failed to get Plateform Version";
-    }
-    if (!mounted) return;
-    setState(() {
-      qrResult = qResult;
-    });
+    // String? qResult;
+    // try {
+    //   qResult = await FlutterBarcodeScanner.scanBarcode(
+    //       "#2097F3", "Cancel", true, ScanMode.QR);
+    // } on PlatformException {
+    //   qResult = "Failed to get Plateform Version";
+    // }
+    // if (!mounted) return;
+
+    // setState(() {
+    //   _qrResult = qResult;
+    // });
+    Get.toNamed(
+      "/StudentPage",
+      arguments: {'res': "1904027"},
+    );
   }
 
   @override

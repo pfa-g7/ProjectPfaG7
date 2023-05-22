@@ -46,4 +46,8 @@ public class StudentService {
     public void deleteById(Integer id) {
         studentRepository.deleteById(id);
     }
+    public Student getStudentByAppoge(int id) {
+        // TODO Auto-generated method stub
+        return studentRepository.findStudentByNumAppoge(id);
+    }
 }

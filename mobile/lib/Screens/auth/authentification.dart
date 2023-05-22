@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mobile/Screens/home_page.dart';
-import 'Welcome/welcome_screen.dart';
+import 'package:mobile/screens/home_page.dart';
+import 'login_page.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +14,7 @@ class MainPage extends StatelessWidget {
         if (snapshot.hasData) {
           return const HomePage();
         } else {
-          return const WelcomeScreen();
+          return const LoginPage();
         }
       },
     ));

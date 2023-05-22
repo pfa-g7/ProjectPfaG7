@@ -16,8 +16,6 @@ import java.util.Optional;
 @RequestMapping("/api/surveillant")
 public class SurveillantController {
 
-
-
         @Autowired
         private SurveillantService surveillantService;
 

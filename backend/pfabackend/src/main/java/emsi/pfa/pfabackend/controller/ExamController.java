@@ -20,7 +20,6 @@ public class ExamController {
     @Autowired
     private ExamService examService;
 
-
     @GetMapping("/")
     public List<Exam> findAll() {
         return examService.findAll();
@@ -42,5 +41,25 @@ public class ExamController {
 
         // Call the custom repository method
         return examService.findByDate(searchDate);
+    }
+
+    @GetMapping("/student/{id}")
+    public List<Exam> findByStudentId(@PathVariable int id) {
+        return examService.findByStudent(id);
+    }
+
+    @GetMapping("/id/{id}")
+    public Exam findById(@PathVariable int id) {
+        return examService.findById(id);
+    }
+
+    @PutMapping("/isPresent/{id}/{presence}")
+    public Exam updateVille(@PathVariable int id, @PathVariable boolean presence) {
+        Exam exist = examService.findById(id);
+        if (exist != null) {
+            exist.setPresence(presence);
+            return examService.save(exist);
+        }
+        return null;
     }
 }

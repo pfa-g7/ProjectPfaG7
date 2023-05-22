@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface StudentRepository extends JpaRepository<Student, Integer> {
     Optional<Student> findById(Integer id);
     Optional<Student> findByCne(String cne);
+    Student findStudentByNumAppoge(int id);
 }

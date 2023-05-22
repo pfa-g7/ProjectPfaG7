@@ -19,6 +19,7 @@ public class StudentController {
     public List<Student> findAll() {
         return studentService.findAll();
     }
+
     @GetMapping("/{id}")
     public Optional<Student> findStudentById(@PathVariable Integer id){
         return studentService.findById(id);
@@ -52,5 +53,10 @@ public class StudentController {
     @PostMapping("/save")
     public void save(@RequestBody Student student) {
         studentService.save(student);
+    }
+
+    @GetMapping("/appoge/{id}")
+    public Student getStudentByAppoge(@PathVariable int id) {
+        return studentService.getStudentByAppoge(id);
     }
 }

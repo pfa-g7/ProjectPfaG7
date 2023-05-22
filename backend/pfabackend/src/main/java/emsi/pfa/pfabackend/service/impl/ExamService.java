@@ -39,4 +39,13 @@ public class ExamService {
     }
 
     public List<Exam> findByDate(Date date) { return  examRepository.findByDate(date);}
+
+    public List<Exam> findByStudent(int id) {
+        // TODO Auto-generated method stub
+        return examRepository.findByStudentId(id);
+    }
+
+    public Exam findById(int id){
+        return examRepository.findById(id);
+    }
 }
