@@ -9,11 +9,11 @@ const navigation = [
     href: "/admin/starter",
     icon: "bi bi-speedometer2",
   },
-  {
+  /*{
     title: "Users",
     href: "/admin/users",
     icon: "bi bi-people",
-  },
+  },*/
   {
     title: "Teachers",
     href: "/admin/teachers",

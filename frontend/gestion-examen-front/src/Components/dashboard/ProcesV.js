@@ -35,7 +35,7 @@ function ProcesV() {
 
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(10);
+    const [itemsPerPage] = useState(50);
 
 
     // Get the current items to display on the current page
@@ -60,7 +60,7 @@ function ProcesV() {
                 <Button onClick={handleFilter}>Filter</Button>
             </Form>
 
-            {exams.length > 0 && (
+            {exams.length > 0 ? (
                 <Card>
                     <CardBody>
                         <h5>Exam Report for : {selectedDate}</h5><Table className="no-wrap mt-3 align-middle" responsive
@@ -110,7 +110,10 @@ function ProcesV() {
                         </Pagination>
                     </CardBody>
                 </Card>
-            )}
+            ) : (
+                <p className="alert alert-danger" role="alert">No exams found for the selected date.</p>
+              
+          )}
         </div>
     );
 }

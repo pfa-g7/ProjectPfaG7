@@ -10,7 +10,7 @@ const Excel = () => {
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(22);
+  const [itemsPerPage] = useState(70);
   const [searchTerm, setSearchTerm] = useState('');
 
   const getExams = async () => {

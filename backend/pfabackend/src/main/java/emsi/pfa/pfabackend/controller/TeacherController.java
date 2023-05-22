@@ -27,7 +27,7 @@ public class TeacherController {
         }
 
     @PutMapping("/{id}")
-    public Teacher updateStudent(@PathVariable Integer id, @RequestBody Teacher updatedTeacher){
+    public Teacher updateTeacher(@PathVariable Integer id, @RequestBody Teacher updatedTeacher){
         Optional<Teacher> existingTeacher = teacherService.findById(id);
         if (existingTeacher.isPresent()) {
             Teacher teacher = existingTeacher.get();

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Row, Card, CardBody, CardTitle, CardSubtitle, Table, Pagination, PaginationItem, PaginationLink, Input } from "reactstrap";
+import { faEdit, faTrash, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Surveillant() {
     const [surv, setSurv] = useState([]);
@@ -14,7 +16,7 @@ function Surveillant() {
     const [userNumSurveillant, setUserNumSurveillant] = useState('');
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [itemsPerPage] = useState(5);
+    const [itemsPerPage] = useState(20);
     const [searchTerm, setSearchTerm] = useState('');
 
     const getSurv = async () => {
@@ -45,7 +47,7 @@ function Surveillant() {
     };
     const addSurv = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/api/surveillant/save', { cin: userCin, email: userEmail, firstName: userFirstName, lastName: userLastName, username: userUserName, password: userPassword, numSurveillant: userNumSurveillant });
+            const response = await axios.post('http://localhost:8080/api/surveillant/save', { cin: userCin, email: userEmail, firstName: userFirstName, lastName: userLastName, username: userUserName, password: userPassword, numSurveillant: userNumSurveillant, role: 'USER' });
             setSurv([...surv, response.data]);
             setUserCin('');
             setUserEmail('');
@@ -207,15 +209,15 @@ function Surveillant() {
                     </div>
                 </div>
                 {userId ? (
-                    <div className="row justify-content-end text-end">
-                        <button className="btn btn-success col-2" onClick={updateSurv}>
+                    <div className="row text-start">
+                        <button className="btn btn-success " onClick={updateSurv}>
                             Update Surveillant
                         </button>
                     </div>
 
                 ) : (
-                    <div className="row justify-content-end text-end">
-                        <button className="btn btn-primary col-2" onClick={addSurv}>
+                    <div className="row text-start">
+                        <button className="btn btn-primary " onClick={addSurv}>
                             Add Surveillant
                         </button>
                     </div>
@@ -260,14 +262,16 @@ function Surveillant() {
                                     <td>{surve.password}</td>
                                     <td>{surve.numSurveillant}</td>
                                     <td>
-                                        <button className="btn btn-primary btn-sm mx-1" onClick={() =>
-                                            getSurvById(surve.id)}>
-                                            Edit
-                                        </button>
-                                        <button className="btn btn-danger btn-sm" onClick={() =>
-                                            deleteSurv(surve.id)}>
-                                            Delete
-                                        </button>
+                                        <FontAwesomeIcon
+                                            icon={faEdit}
+                                            className="btn btn-primary btn-sm mx-1 my-1"
+                                            onClick={() => getSurvById(surve.id)}
+                                        />
+                                        <FontAwesomeIcon
+                                            icon={faTrash}
+                                            className="btn btn-danger btn-sm my-1 mx-"
+                                            onClick={() => deleteSurv(surve.id)}
+                                        />
                                     </td>
                                 </tr>
                             ))}
