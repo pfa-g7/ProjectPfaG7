@@ -268,7 +268,6 @@ function Students() {
                                 <th scope="col">First Name</th>
                                 <th scope="col">Last Name</th>
                                 <th scope="col">UserName</th>
-                                <th scope="col">Password</th>
                                 <th scope="col">Num_Appoge</th>
                                 <th scope="col">Cne</th>
                                 <th scope="col">Code Qr</th>
@@ -284,7 +283,6 @@ function Students() {
                                     <td>{studente.firstName}</td>
                                     <td>{studente.lastName}</td>
                                     <td>{studente.username}</td>
-                                    <td>{studente.password}</td>
                                     <td>{studente.numAppoge}</td>
                                     <td>{studente.cne}</td>
                                     <td><QRCode
