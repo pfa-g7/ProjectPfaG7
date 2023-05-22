@@ -2,6 +2,7 @@ package emsi.pfa.pfabackend.auth;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import emsi.pfa.pfabackend.entity.User;
 import lombok.*;
 
 @Data
@@ -13,4 +14,6 @@ public class AuthenticationResponse {
     private String accessToken;
     @JsonProperty("refresh_token")
     private String refreshToken;
+    @JsonProperty("user")
+    private String user;
 }

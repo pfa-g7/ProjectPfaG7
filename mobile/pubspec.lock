@@ -408,6 +408,25 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.0"
+<<<<<<< HEAD
+=======
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      sha256: "0beed4211050b09650da49fedc3a18dedf8601ba8ce041d7ce06db73cb2aa97e"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.24.1"
+  simple_gesture_detector:
+    dependency: transitive
+    description:
+      name: simple_gesture_detector
+      sha256: "7ab8ee2027f4323a1574e9eeda55d4279ae499190e119d6b872b3a52b501eb42"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.6"
+>>>>>>> 1c15d1088a05c53c2d205f4c1041b7d27dfa044e
   sky_engine:
     dependency: transitive
     description: flutter
@@ -445,6 +464,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  table_calendar:
+    dependency: "direct main"
+    description:
+      name: table_calendar
+      sha256: "82dc932c6e07af6e7eeafb2c91e87969746f3b9b59ac222ecf8d75f51c3a4844"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.3"
   term_glyph:
     dependency: transitive
     description:
