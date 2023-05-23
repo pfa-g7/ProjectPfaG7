@@ -6,33 +6,33 @@ import { Link, useLocation } from "react-router-dom";
 const navigation = [
   {
     title: "Dashboard",
-    href: "/starter",
+    href: "/admin/starter",
     icon: "bi bi-speedometer2",
   },
   /*{
     title: "Users",
-    href: "/users",
+    href: "/admin/users",
     icon: "bi bi-people",
   },*/
   {
     title: "Teachers",
-    href: "/teachers",
+    href: "/admin/teachers",
     icon: "bi bi-people",
   },
   {
     title: "Surveillants",
-    href: "/surveillants",
+    href: "/admin/surveillants",
     icon: "bi bi-people",
   },
   {
     title: "Students",
-    href: "/students",
+    href: "/admin/students",
     icon: "bi bi-people",
   },
   {
     title: "Proces Verbal",
-    href: "/proces",
-    icon: "bi bi-people",
+    href: "/admin/proces",
+    icon: "bi bi-card-text",
   },
   /*{
     title: "Alert",

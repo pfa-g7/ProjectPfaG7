@@ -28,16 +28,7 @@ const isTokenExpired = token => {
     return expirationDate < new Date();
 }
 
-const login = async (email, password) => {
-    const response = await axios.post(`${API_URL}/authenticate`, {email, password});
-    const token = response.data.access_token;
-    const user = response.data.user;
-    console.log(token)
-    console.log(user)
-    localStorage.setItem('token', token);
-    localStorage.setItem('user', user);
-    setAuthToken(token);
-}
+
 
 const register = async (name, email, password) => {
     await axios.post(`${API_URL}/register`, {name, email, password});
@@ -60,7 +51,6 @@ export {
     setAuthToken,
     getTokenExpirationDate,
     isTokenExpired,
-    login,
     register,
     logout,
     getAuthToken,

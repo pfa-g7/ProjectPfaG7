@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {Button, Col, Container, Input, Row} from 'reactstrap';
 import {Facebook, Google, Linkedin, Twitter} from 'react-bootstrap-icons';
 import '../Css/signin.css';
-import {login} from "../utils/auth";
 import {useNavigate} from "react-router-dom";
+import AuthService from "../services/AuthService";
 
 
 function SignIn() {
@@ -14,10 +14,14 @@ function SignIn() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            alert(email)
-            alert(password)
-            await login(email, password);
-            navigate('/starter');
+            const user = await AuthService.login(email, password);
+            console.log(user);
+            if (user?.role === 'STUDENT') {
+                navigate('/student');
+            } else {
+                navigate('/admin/starter');
+            }
+
         } catch (error) {
             console.error(error);
         }
@@ -30,7 +34,7 @@ function SignIn() {
 
                 <Col col='10' md='6'>
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-                         className="img-fluid" alt="Sample image"/>
+                         className="img-fluid"/>
                 </Col>
 
                 <Col col='4' md='6'>
