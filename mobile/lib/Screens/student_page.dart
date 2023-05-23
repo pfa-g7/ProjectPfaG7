@@ -37,7 +37,7 @@ class _StudentPageState extends State<StudentPage> {
     super.initState();
     Map<String, dynamic> arguments = Get.arguments;
     result = arguments['res'];
-    _getAndSetStudentData(1904027);
+    _getAndSetStudentData(int.parse(result!));
   }
 
   _getAndSetStudentData(r) async {
@@ -199,7 +199,10 @@ class _StudentPageState extends State<StudentPage> {
       setState(() {
         _isLoading = false;
       });
-      Get.to(() => const HomePage());
+      Get.toNamed(
+        "/StudentPage",
+        arguments: {'res': result},
+      );
     } else {
       ToastMsg.showToastMsg("Quelque chose s'est mal passé. Essayez à nouveau");
       // Navigator.pop(context);

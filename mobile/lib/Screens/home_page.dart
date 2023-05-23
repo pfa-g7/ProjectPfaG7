@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
 import 'package:mobile/model/exam.dart';
 import 'package:mobile/service/exam_service.dart';
@@ -37,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _isLoading = true;
     });
-
+    log("message");
     final exams = await ExamService.getDataByDate(date);
     setState(() {
       exam = exams;
@@ -52,21 +56,21 @@ class _HomePageState extends State<HomePage> {
   // String email = "${user?.email}";
 
   Future qrCodeScanner() async {
-    // String? qResult;
-    // try {
-    //   qResult = await FlutterBarcodeScanner.scanBarcode(
-    //       "#2097F3", "Cancel", true, ScanMode.QR);
-    // } on PlatformException {
-    //   qResult = "Failed to get Plateform Version";
-    // }
-    // if (!mounted) return;
+    String? qResult;
+    try {
+      qResult = await FlutterBarcodeScanner.scanBarcode(
+          "#2097F3", "Cancel", true, ScanMode.QR);
+    } on PlatformException {
+      qResult = "Failed to get Plateform Version";
+    }
+    if (!mounted) return;
 
-    // setState(() {
-    //   _qrResult = qResult;
-    // });
+    setState(() {
+      qrResult = qResult;
+    });
     Get.toNamed(
       "/StudentPage",
-      arguments: {'res': "1904027"},
+      arguments: {'res': qrResult},
     );
   }
 
@@ -357,8 +361,8 @@ class _HomePageState extends State<HomePage> {
                                         width:
                                             MediaQuery.of(context).size.width -
                                                 160,
-                                        child: const Text(
-                                          "salle 7",
+                                        child: Text(
+                                          "salle exam[0].salle}",
                                           overflow: TextOverflow.ellipsis,
                                           style: TextStyle(
                                               color: Colors.grey, fontSize: 13),
@@ -398,7 +402,23 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       /*start scan button bar */
-
+                      // Container(
+                      //   height: MediaQuery.of(context).size.height,
+                      //   //decoration: IBoxDecoration.upperBoxDecoration(),
+                      //   child: FutureBuilder(
+                      //       future: ExamService.getDataByDate(_selectedDate),
+                      //       builder: (context, snapshot) {
+                      //         if (snapshot.hasData) {
+                      //           return snapshot.data?.length == 0
+                      //               ? const NoDataWidget()
+                      //               : _buildCard(snapshot.data);
+                      //         } else if (snapshot.hasError) {
+                      //           return const NoDataWidget();
+                      //         } else {
+                      //           return const LoadingIndicatorWidget();
+                      //         }
+                      //       }),
+                      // ),
                       /*end scan button bar */
                     ],
                   ),
@@ -552,8 +572,8 @@ class _HomePageState extends State<HomePage> {
           final dateParse = DateTime.parse(date.toString());
           _selectedDate =
               "${dateParse.year}-${dateParse.month}-${dateParse.day}";
-
-          // _reCallMethodes(_selectedDate);
+// log("message"+_selectedDate);
+//           _reCallMethodes(_selectedDate);
         });
       },
     );
