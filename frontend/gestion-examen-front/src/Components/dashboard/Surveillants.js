@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import { Row, Card, CardBody, CardTitle, CardSubtitle, Table, Pagination, PaginationItem, PaginationLink, Input } from "reactstrap";
-import { faEdit, faTrash, faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Surveillant() {
@@ -59,6 +59,7 @@ function Surveillant() {
         } catch (error) {
             console.error(error);
         }
+        window.location.reload();
     };
     const updateSurv = async () => {
         try {
@@ -80,6 +81,7 @@ function Surveillant() {
         } catch (error) {
             console.error(error);
         }
+        window.location.reload();
     };
     const deleteSurv = async (id) => {
         try {
@@ -99,7 +101,7 @@ function Surveillant() {
     // Filter the data based on the search term
     const filteredData = surv.filter((item) => {
         // Modify the condition based on your search requirements
-        return item.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+        return item.firstName?.toLowerCase()?.includes(searchTerm?.toLowerCase());
 
     });
     // Get the current items to display on the current page

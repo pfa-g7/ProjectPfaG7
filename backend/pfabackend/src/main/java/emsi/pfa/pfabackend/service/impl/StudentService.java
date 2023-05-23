@@ -30,8 +30,8 @@ public class StudentService {
             return loadedStudent.get();
         }
         String username = student.getLastName().replaceAll("\\s", "") + student.getFirstName().replaceAll("\\s", "");
-        String password = userImplService.generatePassword();
-        System.out.println("password = " + password);
+//        String password = userImplService.generatePassword();
+        String password = "12345";
         student.setUsername(username.toLowerCase());
         student.setPassword(passwordEncoder.encode(password));
         student.setRole(Role.STUDENT);

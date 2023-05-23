@@ -7,6 +7,7 @@ import 'dart:developer';
 class ExamService {
   static const _viewUrl = "$apiUrl/exam/student";
   static const _addUrl = "$apiUrl/exam/isPresent";
+  static const _dateUrl = "$apiUrl/exam/findByDate";
 
   static List<ExamModel> dataFromJson(String jsonString) {
     final data = json.decode(jsonString);
@@ -15,6 +16,19 @@ class ExamService {
 
   static Future<List<ExamModel>> getData(userId) async {
     final response = await http.get(Uri.parse("$_viewUrl/$userId"));
+    if (response.statusCode == 200) {
+      List<ExamModel> list = dataFromJson(response.body);
+      return list;
+    } else {
+      return []; //if any error occurs then it return a blank list
+    }
+  }
+
+  static Future<List<ExamModel>> getDataByDate(date) async {
+    final formattedDate = date.toIso8601String().split('T')[0];
+    final response = await http.get(
+        Uri.parse(_dateUrl).replace(queryParameters: {'date': formattedDate}));
+
     if (response.statusCode == 200) {
       List<ExamModel> list = dataFromJson(response.body);
       return list;

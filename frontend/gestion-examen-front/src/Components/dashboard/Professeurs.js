@@ -59,6 +59,7 @@ function Professeurs() {
         } catch (error) {
             console.error(error);
         }
+        window.location.reload();
     };
     const updateProf = async () => {
         try {
@@ -80,6 +81,7 @@ function Professeurs() {
         } catch (error) {
             console.error(error);
         }
+        window.location.reload();
     };
     const deleteProf = async (id) => {
         try {
@@ -99,7 +101,7 @@ function Professeurs() {
     // Filter the data based on the search term
     const filteredData = profs.filter((item) => {
         // Modify the condition based on your search requirements
-        return item.firstName.toLowerCase().includes(searchTerm.toLowerCase());
+        return item.firstName?.toLowerCase()?.includes(searchTerm?.toLowerCase());
 
     });
     // Get the current items to display on the current page

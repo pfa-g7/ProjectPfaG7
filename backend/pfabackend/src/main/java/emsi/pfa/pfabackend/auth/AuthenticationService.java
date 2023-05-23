@@ -2,7 +2,6 @@ package emsi.pfa.pfabackend.auth;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 import emsi.pfa.pfabackend.config.JwtService;
 import emsi.pfa.pfabackend.repository.UserRepository;
 import emsi.pfa.pfabackend.token.Token;
