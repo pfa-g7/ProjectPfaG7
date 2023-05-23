@@ -19,7 +19,7 @@ const kPageTitleStyle = TextStyle(
 
 const kCardSubTitleStyle = TextStyle(
   fontFamily: 'OpenSans-SemiBold',
-  fontSize: 15,
+  fontSize: 15.5,
 );
 
 const kParaStyle = TextStyle(

@@ -1,12 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:get/get.dart';
 import '../widgets/bottom_navigation_bar_widget.dart';
-import 'package:flutter/services.dart';
-import 'DatePickerCustom .dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import './scanner/scanCode.dart';
 
 class HomePage extends StatefulWidget {

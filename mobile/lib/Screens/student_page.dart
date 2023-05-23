@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 import 'package:mobile/screens/home_page.dart';
 import 'package:mobile/utilities/toast_msg.dart';
 import 'package:mobile/service/exam_service.dart';
@@ -76,7 +75,7 @@ class _StudentPageState extends State<StudentPage> {
           centerTitle: true,
           title: const Text(
             "Student info",
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            style: kCardSubTitleStyle,
           ),
           actions: [
             IconButton(
@@ -90,6 +89,9 @@ class _StudentPageState extends State<StudentPage> {
         bottomNavigationBar: BottomNavigationStateWidget(
           title: _presence ? "Confirmer la presence" : "Annuler la presence",
           onPressed: () {
+            setState(() {
+              _presence = !_presence;
+            });
             _updateBookedSlot(examId);
           },
           clickable: _isBtnDisable,
@@ -188,8 +190,6 @@ class _StudentPageState extends State<StudentPage> {
       _isLoading = true;
     });
 
-    DateTime now = DateTime.now();
-    String createdTime = DateFormat('yyyy-MM-dd hh:mm').format(now);
     //initialize all values
     final insertStatus = await ExamService.updateData(id, _presence);
     log("ere");
