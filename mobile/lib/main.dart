@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-// import 'package:mobile/Screens/Welcome/welcome_screen.dart';
-// import 'package:mobile/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:mobile/routes/app_routes.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:mobile/Screens/auth/authentification.dart';
-import 'package:mobile/Screens/choosetimeslots.dart';
-import 'package:mobile/Screens/home_page.dart';
-
-import 'Screens/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

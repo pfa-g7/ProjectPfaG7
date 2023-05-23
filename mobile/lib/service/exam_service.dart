@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:mobile/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:mobile/model/exam.dart';
+import 'dart:developer';
 
 class ExamService {
   static const _viewUrl = "$apiUrl/exam/student";

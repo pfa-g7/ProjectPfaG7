@@ -17,7 +17,6 @@ dependencies:
   flutter_svg: ^2.0.5
   firebase_auth: ^4.4.2
   firebase_core: ^2.10.0
-  table_calendar: ^2.3.2
   date_picker_timeline: ^1.2.3
   qr_flutter: ^4.0.0
   flutter_barcode_scanner: ^2.0.0
@@ -26,7 +25,6 @@ dependencies:
   get: ^4.6.1
   http: ^0.13.6
   #intl: ^0.18.1
-  
 
 dev_dependencies:
   flutter_test:
